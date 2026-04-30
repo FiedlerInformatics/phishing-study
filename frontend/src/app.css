@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+
+  grid-template-columns: [start_col] minmax(180px, 20%) [side_col] 1fr [end_col];
+  grid-template-rows: [start_row] 25% [main_row] 1fr [end_row];
+}
+
+.top {
+  background-color: red;
+  grid-column: start_col / end_col;
+  grid-row: start_row / main_row;
+
+  overflow: auto;
+}
+
+.tool_sidebar {
+  grid-column: start_col / side_col;
+  grid-row: main_row / end_row;
+  background-color: blue;
+
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden; /* not scrollable */
+}
+
+.sidebar_item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+/* Size icon to match the h4 line-height, placed before the text */
+.icon {
+  width: 1em;
+  height: 1em;
+  font-size: inherit;
+  flex-shrink: 0;
+}
+
+.email_window {
+  background-color: green;
+  grid-column: side_col / end_col;
+  grid-row: main_row / end_row;
+
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
