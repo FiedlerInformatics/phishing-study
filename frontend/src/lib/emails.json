@@ -808,26 +808,14 @@
     "timestamp": "2021-08-03T11:17:00",
     "preview": "exclusive deal for you: 50% off your first renewal",
     "body": [
-      {
-        "type": "paragraph",
-        "text": "amaysim"
-      },
-      {
-        "type": "paragraph",
-        "text": "hurry - curtain's closing soon on this deal"
-      },
-      {
-        "type": "paragraph",
-        "text": "exclusive deal for you"
-      },
-      {
-        "type": "paragraph",
-        "text": "50% off your first renewal"
-      },
-      {
-        "type": "paragraph",
-        "text": "unlimited mobile data"
-      }
+    
+    {
+        "type": "image",
+        "src": "./src/assets/email_assets/aymasim.png",
+        "alt": "Aymasim website",
+        "width": 650
+    }
+    
     ],
     "folder": "inbox",
     "isPhishing": false,
@@ -841,25 +829,10 @@
     "preview": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein",
     "body": [
       {
-        "type": "paragraph",
-        "text": "IMMOBILIEN SCOUT 24"
-      },
-      {
-        "type": "paragraph",
-        "text": "Der Marktführer: Die Nr. 1 rund um Immobilien"
-      },
-      {
-        "type": "paragraph",
-        "text": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein"
-      },
-      {
-        "type": "paragraph",
-        "text": "Einmal nicht aufgepasst und plötzlich steht man vor der eigenen Haustür – und der Schlüssel liegt drinnen. Schlüsselnotdienste verlangen saftige Preise für Einsätze an Wochenenden oder in der Nacht. Welche Alternativen gibt es?"
-      },
-      {
-        "type": "link",
-        "text": "Zum Ratgeber",
-        "href": ""
+        "type": "image",
+        "src": "./src/assets/email_assets/immoscout24.png",
+        "alt": "Immoscout website",
+        "width": 650
       }
     ],
     "folder": "inbox",
@@ -873,30 +846,11 @@
     "timestamp": "2021-08-06T09:48:00",
     "preview": "Wir haben die perfekten Rabatte für Gesundheit und Fitness.",
     "body": [
-      {
-        "type": "paragraph",
-        "text": "Wir haben die perfekten Rabatte für eure Fitness-Träume"
-      },
-      {
-        "type": "paragraph",
-        "text": "In deinem web-browser anzeigen"
-      },
-      {
-        "type": "paragraph",
-        "text": "UNiDAYS"
-      },
-      {
-        "type": "paragraph",
-        "text": "Fitness-Motivation gefällig?"
-      },
-      {
-        "type": "paragraph",
-        "text": "Wir haben die perfekten Rabatte für Gesundheit und Fitness"
-      },
-      {
-        "type": "link",
-        "text": "Jetzt einlösen",
-        "href": ""
+     {
+        "type": "image",
+        "src": "./src/assets/email_assets/unidays.png",
+        "alt": "Unidays website",
+        "width": 750
       }
     ],
     "folder": "inbox",
@@ -910,26 +864,17 @@
     "timestamp": "2021-08-01T14:35:00",
     "preview": "1.200 Botschafter*innen gesucht.",
     "body": [
-      {
-        "type": "paragraph",
-        "text": "NIVEA"
+       {
+        "type": "image",
+        "src": "./src/assets/email_assets/nivea-logo.png",
+        "alt": "nivea logo",
+        "width": 75
       },
       {
-        "type": "link",
-        "text": "Zur Online Ansicht",
-        "href": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "PRODUKTE   TIPPS & BERATUNG   NEU & EXKLUSIV   NIVEA WELT"
-      },
-      {
-        "type": "paragraph",
-        "text": "1.200 BOTSCHAFTER*INNEN GESUCHT"
-      },
-      {
-        "type": "paragraph",
-        "text": "JETZT EXKLUSIV TESTEN!"
+        "type": "image",
+        "src": "./src/assets/email_assets/nivea.png",
+        "alt": "Nivea website",
+        "width": 850
       }
     ],
     "folder": "inbox",
@@ -943,35 +888,11 @@
     "timestamp": "2021-07-29T19:17:00",
     "preview": "Spitzenfußball in Europa",
     "body": [
-      {
-        "type": "paragraph",
-        "text": "Sport | Live"
-      },
-      {
-        "type": "link",
-        "text": "Web-Ansicht | Login",
-        "href": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "Spitzenfußball in Europa"
-      },
-      {
-        "type": "paragraph",
-        "text": "Plus: Die letzten Tage Olympia"
-      },
-      {
-        "type": "link",
-        "text": "Zu Tipico",
-        "href": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "Hallo Sportsfreund,"
-      },
-      {
-        "type": "paragraph",
-        "text": "die Qualifikation für die Champions League geht weiter! AC Sparta Prag - AS Monaco"
+     {
+        "type": "image",
+        "src": "./src/assets/email_assets/tipico.png",
+        "alt": "Tipico website",
+        "width": 750
       }
     ],
     "folder": "inbox",
@@ -986,26 +907,12 @@
     "preview": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen.",
     "body": [
       {
-        "type": "paragraph",
-        "text": "Sie haben ein neues Gerät? Übertragen Sie jetzt einfach den Schutz."
-      },
-      {
-        "type": "link",
-        "text": "Online anzeigen",
-        "href": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "NortonLifeLock"
-      },
-      {
-        "type": "paragraph",
-        "text": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen."
-      },
-      {
-        "type": "paragraph",
-        "text": "Mit Norton 360 Deluxe ist es einfach, den Schutz auf ein anderes Gerät zu übertragen, wenn sich Ihre Anforderungen ändern."
+        "type": "image",
+        "src": "./src/assets/email_assets/norton.png",
+        "alt": "Norton website",
+        "width": 750
       }
+
     ],
     "folder": "inbox",
     "isPhishing": false,
@@ -1019,26 +926,12 @@
     "preview": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da.",
     "body": [
       {
-        "type": "paragraph",
-        "text": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da."
-      },
-      {
-        "type": "link",
-        "text": "Diese E-Mail online anzeigen",
-        "href": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "adidas"
-      },
-      {
-        "type": "paragraph",
-        "text": "MÄNNER   FRAUEN   KINDER   STORES"
-      },
-      {
-        "type": "paragraph",
-        "text": "LOVE"
+        "type": "image",
+        "src": "./src/assets/email_assets/adidas.png",
+        "alt": "Adidas website",
+        "width": 750
       }
+
     ],
     "folder": "inbox",
     "isPhishing": false,
@@ -1051,42 +944,11 @@
     "timestamp": "2021-07-27T13:11:00",
     "preview": "Dein Umsatz. Dein REWE Bonus Coupon.",
     "body": [
-      {
-        "type": "paragraph",
-        "text": "Aktuelle Angebote: Avocados (500 g) 1.39 € | Funny-frisch Chipsfrisch 0.88 € | Grünländer Käse 1.49 €"
-      },
-      {
-        "type": "paragraph",
-        "text": "Du erhältst diesen Newsletter, weil du dich für den Newsletter-Erhalt von PAYBACK und REWE registriert hast."
-      },
-      {
-        "type": "paragraph",
-        "text": "Sollte diese E-Mail nicht optimal dargestellt werden, klicke bitte"
-      },
-      {
-        "type": "link",
-        "text": "hier",
-        "href": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "REWE   PAYBACK"
-      },
-      {
-        "type": "paragraph",
-        "text": "Dein Umsatz. Dein REWE Bonus Coupon."
-      },
-      {
-        "type": "paragraph",
-        "text": "Sehr geehrter Kunde,"
-      },
-      {
-        "type": "paragraph",
-        "text": "sicher dir Monat für Monat deinen Bonus Coupon – mit bis zu 20fach Punkten* für deine Treue. Einfach online, in der REWE App oder am REWE Service-Punkt im Markt freischalten und profitieren!"
-      },
-      {
-        "type": "paragraph",
-        "text": "Herzliche Grüße"
+     {
+        "type": "image",
+        "src": "./src/assets/email_assets/payback-rewe.png",
+        "alt": "Payback advertisement",
+        "width": 650
       }
     ],
     "folder": "inbox",
@@ -1100,39 +962,13 @@
     "timestamp": "2021-08-04T13:11:00",
     "preview": "Noch 3 Tage: Bis zu 70%",
     "body": [
-      {
-        "type": "paragraph",
-        "text": "zalando"
-      },
-      {
-        "type": "paragraph",
-        "text": "Damen   Herren   Kinder   Beauty"
-      },
-      {
-        "type": "paragraph",
-        "text": "Noch 3 Tage:"
-      },
-      {
-        "type": "paragraph",
-        "text": "Bis zu 70%"
-      },
-      {
-        "type": "paragraph",
-        "text": "10% extra auf Sale-Artikel"
-      },
-      {
-        "type": "paragraph",
-        "text": "dem Code"
-      },
-      {
-        "type": "paragraph",
-        "text": "FINAL-10"
-      },
-      {
-        "type": "link",
-        "text": "Jetzt sparen →",
-        "href": ""
+     {
+        "type": "image",
+        "src": "./src/assets/email_assets/zalando.png",
+        "alt": "zalando website",
+        "width": 650
       }
+
     ],
     "folder": "inbox",
     "isPhishing": false,
