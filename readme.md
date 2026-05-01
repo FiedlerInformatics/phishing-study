@@ -1,7 +1,5 @@
 # Frontend
-![screenshot](https://github.com/FiedlerInformatics/phishing-study/frontend/src/assets/screenshot.png?raw=true)
-
-https://github.com/FiedlerInformatics/phishing-study
+![screenshot](https://github.com/FiedlerInformatics/phishing-study/blob/main/frontend/src/assets/screenshot.png?raw=true)
 
 # Structure
 Emails are stored in `./frontend/src/lib/emails.json` with the following structure:
