@@ -18,25 +18,42 @@ body {
   height: 100%;
 
   grid-template-columns: [start_col] minmax(180px, 20%) [side_col] 1fr [end_col];
-  grid-template-rows: [start_row] 25% [main_row] 1fr [end_row];
+  grid-template-rows: [start_row] 10% [main_row] 1fr [end_row];
 }
 
 .top {
-  background-color: red;
   grid-column: start_col / end_col;
   grid-row: start_row / main_row;
 
   overflow: auto;
 }
 
+.top h1{
+  margin-left: 2%;
+}
+
+.top_title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top_icon {
+  width: 3em;
+  height: 3em;
+  font-size: inherit;
+  position: relative;
+  top: 0.15em;
+}
+
 .tool_sidebar {
   grid-column: start_col / side_col;
   grid-row: main_row / end_row;
-  background-color: blue;
+  margin: 5%;
 
   min-width: 0;
   min-height: 0;
-  overflow: hidden; /* not scrollable */
+  overflow: hidden;
 }
 
 .sidebar_item {
@@ -45,7 +62,6 @@ body {
   gap: 0.4em;
 }
 
-/* Size icon to match the h4 line-height, placed before the text */
 .icon {
   width: 1em;
   height: 1em;
@@ -54,11 +70,194 @@ body {
 }
 
 .email_window {
-  background-color: green;
   grid-column: side_col / end_col;
   grid-row: main_row / end_row;
 
   min-width: 0;
   min-height: 0;
   overflow: auto;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
 }
+
+.email_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 320px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+  }
+
+  .email_row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    background: #fff;
+  }
+
+  .email_row[draggable="true"] {
+    cursor: grab;
+  }
+
+  .email_row[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.sidebar_item.drop_target {
+  /*outline: 2px dashed #0057d8;*/
+  background: #f0f4ff;
+}
+
+  .email_row:hover {
+    background: #f0f4ff;
+  }
+
+  .email_row.selected {
+    background: #dce8ff;
+  }
+
+  .email_row_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .email_row_bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .email_row.unread .email_sender,
+  .email_row.unread .email_subject {
+    font-weight: 700;
+  }
+
+  .email_sender {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .email_subject {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .email_preview {
+    font-size: 0.8rem;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .email_time {
+    font-size: 0.78rem;
+    color: #888;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .email_empty {
+    padding: 1rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .sidebar_item {
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .sidebar_item.active {
+    background: #dce8ff;
+  }
+
+  .sidebar_item:hover:not(.active) {
+    background: #f0f0f0;
+  }
+
+  .email_detail_pane {
+    flex: 1;
+    overflow-y: auto;
+    min-width: 0;
+  }
+
+  .email_detail {
+    padding: 1.5rem;
+  }
+
+  .email_detail_header {
+    margin-bottom: 1rem;
+  }
+
+  .email_detail_subject {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
+  .email_detail_meta {
+    margin: 0.2rem 0;
+    font-size: 0.85rem;
+    color: #444;
+  }
+
+  .email_detail_divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 1rem 0;
+  }
+
+  .email_detail_body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .body_paragraph {
+    margin: 0 0 1rem 0;
+    white-space: pre-wrap;
+  }
+
+  .body_link {
+    display: inline-block;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0.4rem 1rem;
+    background: #0057d8;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .body_link:hover {
+    background: #0041a8;
+  }
+
+  .body_image {
+    display: block;
+    margin: 0.5rem auto 1rem auto;
+    max-width: 100%;
+  }
+
+  .email_placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #aaa;
+    font-style: italic;
+  }

@@ -1,0 +1,1141 @@
+[
+  {
+    "id": 1,
+    "sender": "Dropbox Security Support <info@dropbox.com>",
+    "subject": "Droppbox Notification",
+    "timestamp": "2021-05-12T12:43:00",
+    "preview": "Dropbox Security Notification",
+    "body": [
+      {
+        "type": "image",
+        "src": "./src/assets/email_assets/dropbox-logo.png",
+        "alt": "dropbox logo",
+        "width": 375
+      },
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe"
+      },
+      {
+        "type": "paragraph",
+        "text": "Our security system has detected some irregular activity connected to your account. You will be unable to open documents until this issue has been resolved."
+      },
+      {
+        "type": "link",
+        "text": "CLICK HERE TO RESET YOUR PASSWORD",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Your Dropbox Security Support."
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 2,
+    "sender": "GlobalConnect Team",
+    "subject": "important! Company Evaluation!",
+    "timestamp": "2025-12-13T07:47:00",
+    "preview": "Please fill out this company evaluation",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "we urge you to complete the following company evaluation within 24 hours of receipt so that we can have enough time to evaluate it. We remind yout that filling out is mandatory to every employee."
+      },
+      {
+        "type": "link",
+        "text": "CLICK HERE",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "\nYour GLobal Connect Team."
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 3,
+    "sender": "GlobalConnect Team",
+    "subject": "Quick Empliyee Survey",
+    "timestamp": "2021-08-03T11:06:25",
+    "preview": "Quick Employee Survey",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "We are conducting an employee survey this year to improve the climate withing our team.\nYou have a maximum of 24 hours to complete the questionnaire.\nThe questionnaire is mandatory for every employee.\nIf you do not complete the questionnaire within the time limit, we will notify your boss."
+      },
+      {
+        "type": "link",
+        "text": "CLICK HERE TO ACCESS THE SURVEY",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you in advance!\n\nYour Global Connect Team"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 4,
+    "sender": "Max Miller <maxmiller@globalconnect.com>",
+    "subject": "RE: Document meeting urgent!",
+    "timestamp": "2025-04-27T04:12:00",
+    "preview": "below is the link...",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Hey,\nbelow is the link to the important document for the next meeting. Please have a look if everything is correct.\nOpen this recourse to preview the document (it the link doesn't work, copy it and past to browser):"
+      },
+      {
+        "type": "link",
+        "text": "Document",
+        "href": ""
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": true
+  },
+  {
+    "id": 5,
+    "sender": "management@glubalconnect.com",
+    "subject": "Earn extra money",
+    "timestamp": "2020-12-18T03:40:00",
+    "preview": "Great things are planned for this year's foundation anniversary...",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear colleagues,"
+      },
+      {
+        "type": "paragraph",
+        "text": "Great things are planned for this year's foundation anniversary. For this reason, we still need helpers who actively support us in the construction. To make the offer a little more attractive, we have talked with the company management and decided that each helper receives a bonus. For every hour worked you will get 50 Euro extra! To participate, you have to register today at the following link (all information is summarized there as well):"
+      },
+      {
+        "type": "link",
+        "text": "Link for the registration",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "!! Important: Tomorrow we will not accept any more registrations."
+      },
+      {
+        "type": "paragraph",
+        "text": "Merry Christmas!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Global-Connect Team"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 6,
+    "sender": "One Drive Support",
+    "subject": "UPDATE OneDrive: Validate your Account",
+    "timestamp": "2021-05-12T07:38:00",
+    "preview": "Security Notice!",
+    "body": [
+      {
+        "type":"image",
+        "src": "./src/assets/email_assets/OneDrive-Symbol.png",
+        "alt": "onedrive logo",
+        "width": 150
+      },
+      {
+        "type": "paragraph",
+        "text": "Security Notice!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe, our security system has detected some irregular activity connected to your account. You will be unable to share documents until this issue has been resolved."
+      },
+      {
+        "type": "link",
+        "text": "CLICK HERE TO VALIDATE NOW",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Your OneDrive Support"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 7,
+    "sender": "management@globalconnect.com",
+    "subject": "Win a new IPhone",
+    "timestamp": "2020-08-04T06:58:00",
+    "preview": "Global Connect raffles 10 new iphones as corporate phones.",
+    "body": [
+      {
+        "type":"image",
+        "src": "./src/assets/email_assets/apple-logo.png",
+        "alt": "apple logo",
+        "width": 75
+      },
+      {
+        "type": "paragraph",
+        "text": "Dear Globalconnect employees,"
+      },
+      {
+        "type": "paragraph",
+        "text": "because the turnover was very high last year, Global Connect raffles 10 new iphones as corporate phones among all employees. This is our way to thank employees! If you want to participate in raffle, please register under the link following:"
+      },
+      {
+        "type": "link",
+        "text": "CLICK HERE TO ENROLL",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Good luck!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Your Global-Connect Managment"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 8,
+    "sender": "government@germany.eu",
+    "subject": "New Corona regulations",
+    "timestamp": "2021-07-29T12:01:00",
+    "preview": "New regulations in the sense of the infection protection.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "The government has decided, due to the again rising Corona numbers, new regulations in the sense of the infection protection. These will be valid from tomorrow and sanctioned with high fines in case of violation. All necessary information can be found in the following link:"
+      },
+      {
+        "type": "link",
+        "text": "Corona Guidelines",
+        "href": ""
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 9,
+    "sender": "license@microsuft.com",
+    "subject": "Extend your Microsoft license",
+    "timestamp": "2021-06-29T08:35:00",
+    "preview": "We would like remind you to renew your anual Microsoft license.",
+    "body": [
+      {
+        "type": "image",
+        "src": "./src/assets/email_assets/microsoft-logo.png",
+        "alt": "microsoft logo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dear Customer,"
+      },
+      {
+        "type": "paragraph",
+        "text": "We would like remind you to renew your anual Microsoft license in order to continue Microsoft services and applications using. Otherwise we will be forced to block your acount."
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft Support"
+      },
+      {
+        "type": "link",
+        "text": "CLICK HERE TO RENEW",
+        "href": ""
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 10,
+    "sender": "no-reply@dropbox.com",
+    "subject": "Max Miller has shared Meeting Guide with you",
+    "timestamp": "2021-05-11T06:13:00",
+    "preview": "Max Miller has invited you to edit the document Meeting guide.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Hello John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "Max Miller (maxmiller@globalconnect.com) has invited you to edit the document \"Meeting guide\" in Dropbox."
+      },
+      {
+        "type": "paragraph",
+        "text": "Click"
+      },
+      {
+        "type": "link",
+        "text": "Go to document",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Have fun!\nThe Dropbox team"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 11,
+    "sender": "maxmiller@globalconnect.com",
+    "subject": "Lunchbreak?",
+    "timestamp": "2021-08-05T05:18:00",
+    "preview": "You want to have lunch today?",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Hey,"
+      },
+      {
+        "type": "paragraph",
+        "text": "You want to have lunch today? I heard about a new restaurant right around the corner. We could go"
+      },
+      {
+        "type": "link",
+        "text": "there",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "See you later!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Max"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 12,
+    "sender": "lisachase@globalconnect.com",
+    "subject": "Distribution FFP2 Masks",
+    "timestamp": "2021-07-30T09:13:00",
+    "preview": "Two FFP2 masks will be distributed to all employees next Monday.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear colleagues,"
+      },
+      {
+        "type": "paragraph",
+        "text": "since we at Global-Connect have a FFP2 mask obligation in our office from the week after next, two FFP2 masks will be distributed to all employees next Monday."
+      },
+      {
+        "type": "paragraph",
+        "text": "You can pick up the masks from 09:00 am in the manager room."
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you and stay safe, sane and healthy!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Lisa Chase"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 13,
+    "sender": "margJohnson@globalconnect.com",
+    "subject": "Explanation Transponder battery replacement",
+    "timestamp": "2021-06-06T11:25:00",
+    "preview": "There are still questions regarding the battery change of the transponders.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear colleagues,"
+      },
+      {
+        "type": "paragraph",
+        "text": "Since there are still some questions regarding the battery change of the transponders, we have made the effort to create an online overview. You can find this overview on our homepage under the following link:"
+      },
+      {
+        "type": "link",
+        "text": "LINK",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards"
+      },
+      {
+        "type": "paragraph",
+        "text": "Margot Johnson"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 14,
+    "sender": "companymanagement@globalconnect.com",
+    "subject": "Company party",
+    "timestamp": "2021-05-18T12:43:00",
+    "preview": "We are very pleased to invite you to our company party.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Hi Global-Connect Team,"
+      },
+      {
+        "type": "paragraph",
+        "text": "one year is over again and we are very pleased to invite you to our company party. The party will take place as usual in our regular restaurant. So that we can reserve enough places, we ask you to register bindingly under the following link:"
+      },
+      {
+        "type": "link",
+        "text": "LINK",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "We are looking forward to seeing you!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nMartin Rock"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 15,
+    "sender": "maxmiller@globalconnect.com",
+    "subject": "Information mail - Craftsman",
+    "timestamp": "2021-05-01T11:23:00",
+    "preview": "I have ordered a craftsman for next Monday.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Hey John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "I have ordered a craftsman for next Monday between 10am and 12pm to have someone take a look at the sink in the kitchen. Will you please take him in as I will be in a meeting during that time?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Max"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 16,
+    "sender": "maxmiller@globalconnect.com",
+    "subject": "Numbers Document",
+    "timestamp": "2021-07-07T08:54:00",
+    "preview": "maxmiller@globalconnect.com shared the following Document with you.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "maxmiller@globalconnect.com shared the following Document with you:"
+      },
+      {
+        "type": "link",
+        "text": "Numbers",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Google Docs: Create and edit documents online"
+      },
+      {
+        "type": "paragraph",
+        "text": "Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 17,
+    "sender": "service@globalconnect.com",
+    "subject": "New break room regulations",
+    "timestamp": "2021-08-07T15:21:00",
+    "preview": "We have changed our rules for the break room.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear colleagues,"
+      },
+      {
+        "type": "paragraph",
+        "text": "due to the current situation, we have changed our rules for the break room. The implementation is strictly controlled and violations are noted in the personnel file. So that this does not have to happen, you can find everything at a glance under the following link:"
+      },
+      {
+        "type": "link",
+        "text": "LINK",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards"
+      },
+      {
+        "type": "paragraph",
+        "text": "Global-Connect Service"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": true,
+    "read": false
+  },
+  {
+    "id": 18,
+    "sender": "service@globalconnect.com",
+    "subject": "New break room regulations",
+    "timestamp": "2021-08-07T17:17:00",
+    "preview": "The disinfection dispenser on the second floor is broken.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear colleagues,"
+      },
+      {
+        "type": "paragraph",
+        "text": "we have received feedback that the disinfection dispenser on the second floor is broken. We will take care of the problem as soon as possible. Until then we will provide you with another disinfection dispenser on the other side of the hallway."
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nGlobal-Connect Service"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 19,
+    "sender": "dep.management@globalconnect.com",
+    "subject": "Deadline Project",
+    "timestamp": "2021-08-06T16:58:00",
+    "preview": "Please send me all necessary documents by mail until then.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "after consultation with our customer, I set the deadline for the current project to 15.03.2021. Please send me all necessary documents by mail until then."
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you!\nBest regards\nTimo Michaelsen"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 20,
+    "sender": "lizstone@globalconnect.com",
+    "subject": "Urgent! Missing Documents",
+    "timestamp": "2021-08-04T12:27:00",
+    "preview": "I am still missing the documents from our last team meeting.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "Unfortunately, I am still missing the documents from our last team meeting. Could you please put all the files in my box today? I need them urgently!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nLiz Stone"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 21,
+    "sender": "dep.management@globalconnect.com",
+    "subject": "Appointment Paulsen",
+    "timestamp": "2021-08-04T15:31:00",
+    "preview": "Could you please make an appointment with our customer Mr. Paulsen?",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "could you please make an appointment with our customer Mr. Paulsen for next week as soon as possible? Then we can clarify everything else."
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nTimo Michaelson"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 22,
+    "sender": "companymanagement@globalconnect.com",
+    "subject": "Submission of sick leave",
+    "timestamp": "2021-07-19T20:39:00",
+    "preview": "We still need your sick leave for our booking office.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "We still need your sick leave for our booking office. Since time is now short, it would be great if you send it directly by post."
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you in advance!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nMartin Rock"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 23,
+    "sender": "companymanagement@globalconnect.com",
+    "subject": "Submit vacation request",
+    "timestamp": "2021-05-19T09:10:00",
+    "preview": "You are welcome to take a vacation at the requested time.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "We have revised our planning and decided that you are welcome to take a vacation at the requested time. In order for everything to work out, you should send us your application as soon as possible."
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you in advance!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nMartin Rock"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 24,
+    "sender": "Max Miller",
+    "subject": "Feedback request",
+    "timestamp": "2021-06-11T13:10:00",
+    "preview": "Could you please look over it and help me?",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "thanks for your help with my project! I have tried to implement everything, but I am stuck at another point... Could you please look over it and help me? That would be very important to me, because my deadline is tomorrow."
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you in advance!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Max"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 25,
+    "sender": "Timo Michaelson",
+    "subject": "Task",
+    "timestamp": "2021-08-07T11:18:00",
+    "preview": "I am totally stressed and urgently need your support with a task.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "Unfortunately, I am totally stressed and urgently need your support with a task. Please come by my office in 30 minutes, then you will receive all the important information."
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards\nTimo Michaelson"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 26,
+    "sender": "companymanagement@globalconnect.com",
+    "subject": "Missing information",
+    "timestamp": "2021-07-20T11:15:00",
+    "preview": "We are currently drafting the new contract as discussed.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "we are currently drafting the new contract as discussed. However, we are still missing some information, which is why we cannot finalize it. Could you please send the persons concerned to our office?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards"
+      },
+      {
+        "type": "paragraph",
+        "text": "Martin Rock"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 27,
+    "sender": "Timo Michaelson",
+    "subject": "Schedule zoom meeting for employee review",
+    "timestamp": "2021-08-07T17:27:00",
+    "preview": "Our monthly employee review meeting is coming up again.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Dear John Doe,"
+      },
+      {
+        "type": "paragraph",
+        "text": "our monthly employee review meeting is coming up again. Could you please schedule a Zoom meeting for all employees in the department?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Thank you!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Best regards"
+      },
+      {
+        "type": "paragraph",
+        "text": "Timo Michaelson"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 28,
+    "sender": "service@e.amaysim.com.au",
+    "subject": "Hey there, 50% off unlimited mobile data",
+    "timestamp": "2021-08-03T11:17:00",
+    "preview": "exclusive deal for you: 50% off your first renewal",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "amaysim"
+      },
+      {
+        "type": "paragraph",
+        "text": "hurry - curtain's closing soon on this deal"
+      },
+      {
+        "type": "paragraph",
+        "text": "exclusive deal for you"
+      },
+      {
+        "type": "paragraph",
+        "text": "50% off your first renewal"
+      },
+      {
+        "type": "paragraph",
+        "text": "unlimited mobile data"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 29,
+    "sender": "noreply@mail.immobilienscout24.de",
+    "subject": "Mieter vs. Vermieter – Wo wird am meisten gestritten?",
+    "timestamp": "2021-08-01T08:21:00",
+    "preview": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "IMMOBILIEN SCOUT 24"
+      },
+      {
+        "type": "paragraph",
+        "text": "Der Marktführer: Die Nr. 1 rund um Immobilien"
+      },
+      {
+        "type": "paragraph",
+        "text": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein"
+      },
+      {
+        "type": "paragraph",
+        "text": "Einmal nicht aufgepasst und plötzlich steht man vor der eigenen Haustür – und der Schlüssel liegt drinnen. Schlüsselnotdienste verlangen saftige Preise für Einsätze an Wochenenden oder in der Nacht. Welche Alternativen gibt es?"
+      },
+      {
+        "type": "link",
+        "text": "Zum Ratgeber",
+        "href": ""
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 30,
+    "sender": "Angebote@myunidays.com",
+    "subject": "Fitness-Motivation gefällig?",
+    "timestamp": "2021-08-06T09:48:00",
+    "preview": "Wir haben die perfekten Rabatte für Gesundheit und Fitness.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Wir haben die perfekten Rabatte für eure Fitness-Träume"
+      },
+      {
+        "type": "paragraph",
+        "text": "In deinem web-browser anzeigen"
+      },
+      {
+        "type": "paragraph",
+        "text": "UNiDAYS"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fitness-Motivation gefällig?"
+      },
+      {
+        "type": "paragraph",
+        "text": "Wir haben die perfekten Rabatte für Gesundheit und Fitness"
+      },
+      {
+        "type": "link",
+        "text": "Jetzt einlösen",
+        "href": ""
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 31,
+    "sender": "newsletter@newsletter.nivea.de",
+    "subject": "Deo jetzt exklusiv testen",
+    "timestamp": "2021-08-01T14:35:00",
+    "preview": "1.200 Botschafter*innen gesucht.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "NIVEA"
+      },
+      {
+        "type": "link",
+        "text": "Zur Online Ansicht",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "PRODUKTE   TIPPS & BERATUNG   NEU & EXKLUSIV   NIVEA WELT"
+      },
+      {
+        "type": "paragraph",
+        "text": "1.200 BOTSCHAFTER*INNEN GESUCHT"
+      },
+      {
+        "type": "paragraph",
+        "text": "JETZT EXKLUSIV TESTEN!"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 32,
+    "sender": "no-reply@message.tipico.de",
+    "subject": "Hochspannende Spiele und Olympia-Finish",
+    "timestamp": "2021-07-29T19:17:00",
+    "preview": "Spitzenfußball in Europa",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Sport | Live"
+      },
+      {
+        "type": "link",
+        "text": "Web-Ansicht | Login",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Spitzenfußball in Europa"
+      },
+      {
+        "type": "paragraph",
+        "text": "Plus: Die letzten Tage Olympia"
+      },
+      {
+        "type": "link",
+        "text": "Zu Tipico",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "Hallo Sportsfreund,"
+      },
+      {
+        "type": "paragraph",
+        "text": "die Qualifikation für die Champions League geht weiter! AC Sparta Prag - AS Monaco"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 33,
+    "sender": "norton@secure.norton.com",
+    "subject": "NortonLifeLock",
+    "timestamp": "2021-07-27T12:52:00",
+    "preview": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Sie haben ein neues Gerät? Übertragen Sie jetzt einfach den Schutz."
+      },
+      {
+        "type": "link",
+        "text": "Online anzeigen",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "NortonLifeLock"
+      },
+      {
+        "type": "paragraph",
+        "text": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen."
+      },
+      {
+        "type": "paragraph",
+        "text": "Mit Norton 360 Deluxe ist es einfach, den Schutz auf ein anderes Gerät zu übertragen, wenn sich Ihre Anforderungen ändern."
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 34,
+    "sender": "kate.cornwell@imotions.com",
+    "subject": "Every week is pride week",
+    "timestamp": "2021-07-01T13:11:00",
+    "preview": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da."
+      },
+      {
+        "type": "link",
+        "text": "Diese E-Mail online anzeigen",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "adidas"
+      },
+      {
+        "type": "paragraph",
+        "text": "MÄNNER   FRAUEN   KINDER   STORES"
+      },
+      {
+        "type": "paragraph",
+        "text": "LOVE"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 35,
+    "sender": "payback@mailing.rewe.de",
+    "subject": "Geld sparen mit Payback-Punkten",
+    "timestamp": "2021-07-27T13:11:00",
+    "preview": "Dein Umsatz. Dein REWE Bonus Coupon.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Aktuelle Angebote: Avocados (500 g) 1.39 € | Funny-frisch Chipsfrisch 0.88 € | Grünländer Käse 1.49 €"
+      },
+      {
+        "type": "paragraph",
+        "text": "Du erhältst diesen Newsletter, weil du dich für den Newsletter-Erhalt von PAYBACK und REWE registriert hast."
+      },
+      {
+        "type": "paragraph",
+        "text": "Sollte diese E-Mail nicht optimal dargestellt werden, klicke bitte"
+      },
+      {
+        "type": "link",
+        "text": "hier",
+        "href": ""
+      },
+      {
+        "type": "paragraph",
+        "text": "REWE   PAYBACK"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dein Umsatz. Dein REWE Bonus Coupon."
+      },
+      {
+        "type": "paragraph",
+        "text": "Sehr geehrter Kunde,"
+      },
+      {
+        "type": "paragraph",
+        "text": "sicher dir Monat für Monat deinen Bonus Coupon – mit bis zu 20fach Punkten* für deine Treue. Einfach online, in der REWE App oder am REWE Service-Punkt im Markt freischalten und profitieren!"
+      },
+      {
+        "type": "paragraph",
+        "text": "Herzliche Grüße"
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  },
+  {
+    "id": 36,
+    "sender": "message@my.zalando.de",
+    "subject": "Finaler Sale",
+    "timestamp": "2021-08-04T13:11:00",
+    "preview": "Noch 3 Tage: Bis zu 70%",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "zalando"
+      },
+      {
+        "type": "paragraph",
+        "text": "Damen   Herren   Kinder   Beauty"
+      },
+      {
+        "type": "paragraph",
+        "text": "Noch 3 Tage:"
+      },
+      {
+        "type": "paragraph",
+        "text": "Bis zu 70%"
+      },
+      {
+        "type": "paragraph",
+        "text": "10% extra auf Sale-Artikel"
+      },
+      {
+        "type": "paragraph",
+        "text": "dem Code"
+      },
+      {
+        "type": "paragraph",
+        "text": "FINAL-10"
+      },
+      {
+        "type": "link",
+        "text": "Jetzt sparen →",
+        "href": ""
+      }
+    ],
+    "folder": "inbox",
+    "isPhishing": false,
+    "read": false
+  }
+]
