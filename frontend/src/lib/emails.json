@@ -35,9 +35,9 @@
     "read": false,
     "senderSpoofed": false,
     "emailCategory": "neutral",
-    "phishingCategory": null,
-    "manipulationTechnique": null,
-    "difficulty": null
+    "phishingCategory": "request for password reset",
+    "manipulationTechnique": ["authority"],
+    "difficulty": "hard"
   },
   {
     "id": 2,
