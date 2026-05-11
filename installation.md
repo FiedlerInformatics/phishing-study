@@ -7,7 +7,7 @@
 # Linux Fedora
 
 ## Clone or download the code
-Clone the code with the following git-command and chante the directory:
+Clone the code with the following git-command and change the directory:
 ```
 sudo dnf install git
 git clone https://github.com/FiedlerInformatics/phishing-study.git
@@ -25,12 +25,13 @@ sudo dnf install nodejs npm
 node -v
 npm -v
 ```
-Change directory and then install `package.json` dependencies with npm:
+In the project-directory install `package.json` dependencies with npm:
 ```
 npm install
 ```
 
 ## Start the server and open the app on localhost
+Open the terminal in the `/frontend` directory and run the command:
 ```
 npm run dev
 ```
