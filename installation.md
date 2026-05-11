@@ -1,8 +1,8 @@
 # Installation and Setup
 
-[Fedora](#linux-fedora)
-[Ubuntu](#linux-ubuntu)
-[Windows 11](#windows-11)
+[Fedora](#linux-fedora)<br>
+[Ubuntu](#linux-ubuntu)<br>
+[Windows 11](#windows-11)<br>
 
 # Linux Fedora
 
