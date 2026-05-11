@@ -1,3 +1,6 @@
+# Installation and Setup
+[Intallation and setup guidelines for Fedora, Ubuntu and Windows 11](https://github.com/FiedlerInformatics/phishing-study/blob/main/installation.md)
+
 # Frontend
 ![screenshot](https://github.com/FiedlerInformatics/phishing-study/blob/main/frontend/src/assets/screenshot.png?raw=true)
 
