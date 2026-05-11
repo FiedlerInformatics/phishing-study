@@ -1,6 +1,6 @@
 export type EmailCategory = 'advertising' | 'neutral' | 'urgent';
 export type PhishingCategory =
-    'shared document' | 'new office regulation' | 'request for password reset' |
+    'shared document' | 'new regulation' | 'request for password reset' |
     'evaluation form' | 'employee survey' | 'account validation' |
     'lottery' | 'party invitation' | 'extending software license'
     ;
@@ -30,5 +30,5 @@ export interface Email {
   phishingCategory: PhishingCategory;
   manipulationTechnique: ManipulationTechnique[];
   difficulty: Difficulty;
-  mimickedWebsite: MimickedWebsite;
+  //mimickedWebsite: MimickedWebsite;
 }

@@ -42,6 +42,5 @@ export interface Email {
   phishingCategory: PhishingCategory;
   manipulationTechnique: ManipulationTechnique[];
   difficulty: Difficulty;
-  mimickedWebsite: MimickedWebsite;
 }
 ```

@@ -37,8 +37,7 @@
     "emailCategory": "neutral",
     "phishingCategory": null,
     "manipulationTechnique": null,
-    "difficulty": null,
-    "mimickedWebsite": null
+    "difficulty": null
   },
   {
     "id": 2,
@@ -73,8 +72,7 @@
     "emailCategory": "neutral",
     "phishingCategory": "evaluation form",
     "manipulationTechnique": ["authority","stress"],
-    "difficulty": "medium",
-    "mimickedWebsite": null
+    "difficulty": "medium"
   },
   {
     "id": 3,
@@ -109,8 +107,7 @@
     "emailCategory": "neutral",
     "phishingCategory": "employee survey",
     "manipulationTechnique": ["authority","stress"],
-    "difficulty": "medium",
-    "mimickedWebsite": null
+    "difficulty": "medium"
   },
   {
     "id": 4,
@@ -174,8 +171,7 @@
     "emailCategory": "neutral",
     "phishingCategory": "evaluation form",
     "manipulationTechnique": ["reward","stress"],
-    "difficulty": "easy",
-    "mimickedWebsite": null
+    "difficulty": "easy"
   },
   {
     "id": 6,
@@ -216,8 +212,7 @@
     "emailCategory": "urgent",
     "phishingCategory": "account validation",
     "manipulationTechnique": ["stress","helpfulness"],
-    "difficulty": "medium",
-    "mimickedWebsite": null
+    "difficulty": "medium"
   },
   {
     "id": 7,
@@ -262,8 +257,7 @@
     "emailCategory": "neutral",
     "phishingCategory": "lottery",
     "manipulationTechnique": ["reward"],
-    "difficulty": "hard",
-    "mimickedWebsite": null
+    "difficulty": "hard"
   },
   {
     "id": 8,
@@ -290,8 +284,7 @@
     "emailCategory": "urgent",
     "phishingCategory": "new regulation",
     "manipulationTechnique": ["stress","authority"],
-    "difficulty": "hard",
-    "mimickedWebsite": null
+    "difficulty": "hard"
   },
   {
     "id": 9,
@@ -335,8 +328,7 @@
     "emailCategory": "urgent",
     "phishingCategory": "account validation",
     "manipulationTechnique": ["authority","stress"],
-    "difficulty": "easy",
-    "mimickedWebsite": null
+    "difficulty": "easy"
   },
   {
     "id": 10,
@@ -596,8 +588,7 @@
     "emailCategory": "neutral",
     "phishingCategory": "new regulation",
     "manipulationTechnique": ["authority","stress"],
-    "difficulty": "hard",
-    "mimickedWebsite": null
+    "difficulty": "hard"
   },
   {
     "id": 18,
