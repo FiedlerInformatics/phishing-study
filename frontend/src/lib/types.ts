@@ -1,18 +1,6 @@
-# Installation and Setup
-[Intallation and setup guidelines for Fedora, Ubuntu and Windows 11](https://github.com/FiedlerInformatics/phishing-study/blob/main/installation.md)
-
-# Frontend
-![screenshot](https://github.com/FiedlerInformatics/phishing-study/blob/main/frontend/src/assets/screenshot.png?raw=true)
-
-![screenshot](https://github.com/FiedlerInformatics/phishing-study/blob/main/frontend/src/assets/screenshot-interactive.png?raw=true)
-
-# Documentation
-## Emails
-Emails are stored in `./frontend/src/lib/emails.json` with the following structure, defined in `./frontend/src/lib/types.ts` :
-```
 export type EmailCategory = 'advertising' | 'neutral' | 'urgent';
 export type PhishingCategory =
-    'shared document' | 'new regulation' | 'request for password reset' |
+    'shared document' | 'new office regulation' | 'request for password reset' |
     'evaluation form' | 'employee survey' | 'account validation' |
     'lottery' | 'party invitation' | 'extending software license'
     ;
@@ -44,4 +32,3 @@ export interface Email {
   difficulty: Difficulty;
   mimickedWebsite: MimickedWebsite;
 }
-```
