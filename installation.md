@@ -38,9 +38,11 @@ npm run dev
 And then open the localhost showed in the terminal.
 Usually it is:
 ```
+http://localhost:5137
+```
+or
+```
 http://localhost:3000
 ```
-
-
 # Linux Ubuntu
 # Windows 11
