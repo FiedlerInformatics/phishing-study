@@ -9,7 +9,7 @@
 # Documentation
 ## Emails
 Emails are stored in `./frontend/src/lib/emails.json` with the following structure, defined in `./frontend/src/lib/types.ts` :
-```
+``` ts
 export type EmailCategory = 'advertising' | 'neutral' | 'urgent';
 export type PhishingCategory =
     'shared document' | 'new regulation' | 'request for password reset' |
