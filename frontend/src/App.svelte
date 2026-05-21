@@ -9,12 +9,14 @@
   import notes_icon from './assets/notes-icon.svg'
   import tag_icon from './assets/tag-icon.svg'
   import star_icon from './assets/star-icon.svg'
-
   import emailsRaw from './lib/emails.json'
+  import Button_start from '$lib/components/Button_start.svelte';
 
   let emails = $state(emailsRaw.map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
+
+  const DURATION_MS = 5 * 60 * 1000
 
   /** @param {typeof emails[0]} email */
   function selectEmail(email) {
@@ -62,11 +64,17 @@
 <div class="container">
 
   <section class="top">
-    <div class="top_title">
-      <h1>Outmail</h1>
-      <img class="top_icon" src={mail_icon} alt="mail logo">
-    </div>
+      <div class="top_title">
+        <h1>Outmail</h1>
+        <img class="top_icon" src={mail_icon} alt="mail logo">
+      </div>
   </section>
+  
+  <div class="timer-container">
+    <Button_start class="danger lg">
+        Run timer
+    </Button_start>
+  </div>
 
   <section class="tool_sidebar">
     <div

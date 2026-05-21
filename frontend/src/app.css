@@ -46,6 +46,26 @@ body {
   top: 0.15em;
 }
 
+.timer-container {
+    grid-column: side_col / end_col;
+    grid-row: start_row / main_row;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 20px;
+  }
+
+  .timer-display {
+    font-variant-numeric: tabular-nums;
+    font-family: monospace;
+    font-size: 1.1rem;
+  }
+  .timer-display.warning {
+    color: red; 
+  }
+
 .tool_sidebar {
   grid-column: start_col / side_col;
   grid-row: main_row / end_row;
@@ -261,3 +281,23 @@ body {
     color: #aaa;
     font-style: italic;
   }
+
+  --Variablen für Button-Farben
+
+  :root {
+  --red3:  #ffefef;
+  --red4:  #ffe0e0;
+  --red5:  #ffd0d0;
+  --red9:  #e5484d;
+  --red10: #dc3d43;
+  --red11: #ce2c31;
+  --red12: #641723;
+}
+
+:root {
+  --bg: #ffffff;
+  --gray4:  #e8e8e8;
+  --gray5:  #dcdcdc;
+  --gray11: #646464;
+  --gray12: #202020;
+}

@@ -128,7 +128,15 @@
     ],
     "folder": "inbox",
     "isPhishing": false,
-    "read": true
+    "read": true,
+
+    "senderSpoofed": false,
+    "emailCategory": "neutral",
+    "phishingCategory": "shared document",
+    "manipulationTechnique": ["stress"],
+    "difficulty": "hard",
+    "mimickedWebsite": null
+
   },
   {
     "id": 5,
@@ -296,7 +304,8 @@
       {
         "type": "image",
         "src": "./src/assets/email_assets/microsoft-logo.png",
-        "alt": "microsoft logo"
+        "alt": "microsoft logo",
+        "width": 275
       },
       {
         "type": "paragraph",
