@@ -11,12 +11,46 @@
   import star_icon from './assets/star-icon.svg'
   import emailsRaw from './lib/emails.json'
   import Button_start from '$lib/components/Button_start.svelte';
+  import {timer} from '$lib/timer.svelte'
 
   let emails = $state(emailsRaw.map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
 
-  const DURATION_MS = 5 * 60 * 1000
+  //Timer
+  const DURATION_MS = 1.1 * 60 * 1000;
+
+  let { sessionId, remaining = $bindable(DURATION_MS) } = $props();
+
+  let running = $state(false);
+  let intervalId = null;
+
+  const formatted = $derived(() => {
+    const m  = Math.floor(remaining / 60000);
+    const s  = Math.floor((remaining % 60000) / 1000);
+    const ms = remaining % 1000;
+    return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}:${String(ms).padStart(3,'0')}`;
+  });
+
+  const isFinalCountdown = $derived(remaining < 60000 && running);
+  const isFirstWarning = $derived(remaining < 1.5 * 60000 && running)
+
+
+  function start() {
+    if (running) return;
+    running = true;
+    //logEvent('start');
+
+    intervalId = setInterval(() => {
+      remaining -= 10;
+      if (remaining <= 0) {
+        remaining = 0;
+        clearInterval(intervalId);
+        running = false;
+        //logEvent('expired');
+      }
+    }, 10);
+  }
 
   /** @param {typeof emails[0]} email */
   function selectEmail(email) {
@@ -59,6 +93,7 @@
 
 </script>
 
+
 <link rel="icon" href="./assets/email_assets/favicon.svg"/>
 
 <div class="container">
@@ -69,13 +104,23 @@
         <img class="top_icon" src={mail_icon} alt="mail logo">
       </div>
   </section>
-  
-  <div class="timer-container">
-    <Button_start class="danger lg">
-        Run timer
-    </Button_start>
-  </div>
 
+<div class="timer-container">  
+  <button
+    class="timer-btn"
+    class:firstWarning = {isFirstWarning}
+    class:finalCountdown = {isFinalCountdown}
+    class:expired={remaining === 0}
+    onclick={start}
+    disabled={running || remaining === 0}
+  >
+    {#if !running && remaining === DURATION_MS}
+      ▶ Start
+    {:else}
+      {formatted()}
+    {/if}
+</button>
+</div>
   <section class="tool_sidebar">
     <div
       id="inbox"
@@ -292,6 +337,16 @@
                   alt={part.alt}
                   width={part.width ?? 'auto'}
                 >
+                {:else if part.type === 'iframe'}
+                  <iframe
+                    class="body_iframe"
+                    src={part.src}
+                    title={part.alt ?? ''}
+                    width={part.width ?? 950}
+                    height={part.height ?? 420}
+                    sandbox="allow-scripts allow-same-origin"
+                    scrolling="yes"
+                  ></iframe>
               {/if}
             {/each}
           </div>

@@ -12,6 +12,15 @@ body {
   margin: 0;
 }
 
+
+.body_iframe {
+ display: block;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-width: 100%; 
+}
+
 .container {
   display: grid;
   width: 100%;
@@ -61,9 +70,6 @@ body {
     font-variant-numeric: tabular-nums;
     font-family: monospace;
     font-size: 1.1rem;
-  }
-  .timer-display.warning {
-    color: red; 
   }
 
 .tool_sidebar {
@@ -280,6 +286,38 @@ body {
     height: 100%;
     color: #aaa;
     font-style: italic;
+  }
+
+  .timer-btn {
+    font-family: monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    min-width: 130px;   /* verhindert Größensprung beim Umschalten */
+  }
+
+  .timer-btn:disabled {
+    cursor: default;
+  }
+
+  .timer-btn.firstWarning {
+    background-color: orange;
+  }
+
+  .timer-btn.finalCountdown {
+    background: red;
+    transform: scale(150%);
+    margin: 1.75vw;
+  }
+
+  .timer-btn.expired {
+    background: #7f8c8d;
   }
 
   --Variablen für Button-Farben

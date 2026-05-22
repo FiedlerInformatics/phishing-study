@@ -909,10 +909,10 @@
     "preview": "Wir haben die perfekten Rabatte für Gesundheit und Fitness.",
     "body": [
      {
-        "type": "image",
-        "src": "./src/assets/email_assets/unidays.png",
-        "alt": "Unidays website",
-        "width": 750
+        "type": "iframe",
+        "src": "/snapshots/myunidays.html",
+        "width": 900,
+        "height": 700
       }
     ],
     "folder": "inbox",
@@ -927,16 +927,10 @@
     "preview": "1.200 Botschafter*innen gesucht.",
     "body": [
        {
-        "type": "image",
-        "src": "./src/assets/email_assets/nivea-logo.png",
-        "alt": "nivea logo",
-        "width": 75
-      },
-      {
-        "type": "image",
-        "src": "./src/assets/email_assets/nivea.png",
-        "alt": "Nivea website",
-        "width": 850
+      "type": "iframe",
+      "src": "/snapshots/nivea.html",
+      "width": 900,
+      "height": 700 
       }
     ],
     "folder": "inbox",

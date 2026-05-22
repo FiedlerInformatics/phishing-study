@@ -1,4 +1,6 @@
 <script>
+	import {timer} from '$lib/timer.svelte.js'
+
 	let buttonProps = {
 	class:[$$restProps.class]
 	}
@@ -6,6 +8,8 @@
 	function log() {
 		console.log("clicked")
 	}
+
+
 
 </script>
 	<button on:click = {log}
