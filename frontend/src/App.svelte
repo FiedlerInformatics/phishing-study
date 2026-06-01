@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+
   import email_warning from './assets/email-warning-icon.svg'
   import inbox_icon from './assets/inbox-icon.svg'
   import mail_alert_icon from './assets/mail-alert-icon.svg'
@@ -9,7 +11,9 @@
   import notes_icon from './assets/notes-icon.svg'
   import tag_icon from './assets/tag-icon.svg'
   import star_icon from './assets/star-icon.svg'
+  import heart_icon from './assets/heart-icon.svg'
   import emailsRaw from './lib/emails.json'
+
   import Button_start from '$lib/components/Button_start.svelte';
   import {timer} from '$lib/timer.svelte'
 
@@ -18,7 +22,7 @@
   let activeFolder = $state('inbox')
 
   //Timer
-  const DURATION_MS = 1.1 * 60 * 1000;
+  const DURATION_MS = 2.1 * 60 * 1000;
 
   let { sessionId, remaining = $bindable(DURATION_MS) } = $props();
 
@@ -91,6 +95,18 @@
     draggedEmail = null
   }
 
+   let heartRate: number | null = $state(null);
+   let ws: WebSocket;
+
+  onMount(() => {
+    ws = new WebSocket('ws://localhost:8765');
+    ws.onmessage = (e) => { heartRate = Number(e.data); };
+  });
+
+  onDestroy(() => ws?.close());
+
+  let bmpWarning_visible = $derived(heartRate !== null && heartRate > 80);
+
 </script>
 
 
@@ -105,22 +121,34 @@
       </div>
   </section>
 
-<div class="timer-container">  
-  <button
-    class="timer-btn"
-    class:firstWarning = {isFirstWarning}
-    class:finalCountdown = {isFinalCountdown}
-    class:expired={remaining === 0}
-    onclick={start}
-    disabled={running || remaining === 0}
-  >
-    {#if !running && remaining === DURATION_MS}
-      ▶ Start
-    {:else}
-      {formatted()}
-    {/if}
-</button>
-</div>
+{#if bmpWarning_visible}  
+  <div class="stress_warning">
+      <img id="heart_icon" src={heart_icon} alt="heart icon">
+
+      <div class="warning_text">
+          <h2>You seem stressed!</h2>
+          <h3>You may be vulnerable to fraud and cyber attacks</h3>
+          <h3>{heartRate} bpm</h3>
+      </div>
+  </div>
+{/if}
+
+  <div class="timer-container">  
+    <button
+      class="timer-btn"
+      class:firstWarning = {isFirstWarning}
+      class:finalCountdown = {isFinalCountdown}
+      class:expired={remaining === 0}
+      onclick={start}
+      disabled={running || remaining === 0}
+    >
+      {#if !running && remaining === DURATION_MS}
+        ▶ Start
+      {:else}
+        {formatted()}
+      {/if}
+  </button>
+  </div>
   <section class="tool_sidebar">
     <div
       id="inbox"

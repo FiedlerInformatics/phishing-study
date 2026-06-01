@@ -1,3 +1,4 @@
 *.pdf
 sandbox/
 scripts/
+App_old.svelte
