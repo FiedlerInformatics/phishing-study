@@ -870,14 +870,12 @@
     "timestamp": "2021-08-03T11:17:00",
     "preview": "exclusive deal for you: 50% off your first renewal",
     "body": [
-    
-    {
-        "type": "image",
-        "src": "./src/assets/email_assets/aymasim.png",
-        "alt": "Aymasim website",
-        "width": 650
-    }
-    
+      {
+      "type": "iframe",
+      "src": "/snapshots/amaysim.html",
+      "width": 900,
+      "height": 700 
+      }
     ],
     "folder": "inbox",
     "isPhishing": false,
@@ -891,10 +889,10 @@
     "preview": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein",
     "body": [
       {
-        "type": "image",
-        "src": "./src/assets/email_assets/immoscout24.png",
-        "alt": "Immoscout website",
-        "width": 650
+      "type": "iframe",
+      "src": "/snapshots/ImmoScout24.html",
+      "width": 900,
+      "height": 700 
       }
     ],
     "folder": "inbox",
@@ -944,11 +942,11 @@
     "timestamp": "2021-07-29T19:17:00",
     "preview": "Spitzenfußball in Europa",
     "body": [
-     {
-        "type": "image",
-        "src": "./src/assets/email_assets/tipico.png",
-        "alt": "Tipico website",
-        "width": 750
+    {
+      "type": "iframe",
+      "src": "/snapshots/tipico.html",
+      "width": 900,
+      "height": 700 
       }
     ],
     "folder": "inbox",
@@ -963,12 +961,11 @@
     "preview": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen.",
     "body": [
       {
-        "type": "image",
-        "src": "./src/assets/email_assets/norton.png",
-        "alt": "Norton website",
-        "width": 750
+      "type": "iframe",
+      "src": "/snapshots/norton.html",
+      "width": 900,
+      "height": 700 
       }
-
     ],
     "folder": "inbox",
     "isPhishing": false,
@@ -981,13 +978,12 @@
     "timestamp": "2021-07-01T13:11:00",
     "preview": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da.",
     "body": [
-      {
-        "type": "image",
-        "src": "./src/assets/email_assets/adidas.png",
-        "alt": "Adidas website",
-        "width": 750
+    {
+      "type": "iframe",
+      "src": "/snapshots/adidas.html",
+      "width": 900,
+      "height": 700 
       }
-
     ],
     "folder": "inbox",
     "isPhishing": false,
@@ -1001,10 +997,10 @@
     "preview": "Dein Umsatz. Dein REWE Bonus Coupon.",
     "body": [
      {
-        "type": "image",
-        "src": "./src/assets/email_assets/payback-rewe.png",
-        "alt": "Payback advertisement",
-        "width": 650
+      "type": "iframe",
+      "src": "/snapshots/rewe.html",
+      "width": 900,
+      "height": 700 
       }
     ],
     "folder": "inbox",
@@ -1019,12 +1015,11 @@
     "preview": "Noch 3 Tage: Bis zu 70%",
     "body": [
      {
-        "type": "image",
-        "src": "./src/assets/email_assets/zalando.png",
-        "alt": "zalando website",
-        "width": 650
+      "type": "iframe",
+      "src": "/snapshots/zalando.html",
+      "width": 900,
+      "height": 700 
       }
-
     ],
     "folder": "inbox",
     "isPhishing": false,
