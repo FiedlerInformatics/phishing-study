@@ -4,8 +4,6 @@
 # Frontend
 ![screenshot](./screenshots/screenshot_start.png)
 
-![screenshot](./screenshots/screenshot_finalCountdown.png)
-
 ![screenshot](./screenshots/screenshot_bpm_measuring.png)
 
 # Documentation
