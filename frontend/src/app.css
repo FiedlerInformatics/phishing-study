@@ -57,21 +57,51 @@ body {
 }
 
 .stress_warning {
+
     grid-column: side_col;
     grid-row: start_row;
 
-    display: flex;
+    display: grid;
     align-items: center;
+
+    grid-template-columns: [heart_col] 1fr [bpm_col] 1fr [warning_col] 5fr;
 
     width: 70%;
     height: 70%;
     margin: 1.5vh;
-
     border: 0.3vw solid #FF3300;
     border-radius: 1.5vw;
 }
 
-.warning_text {
+#heart_icon {
+    grid-column: heart_col;
+
+    filter: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(5901%) hue-rotate(358deg) brightness(99%) contrast(104%);
+    scale: 0.8;
+    padding-left: 0.5vw;
+}
+
+#bpm_display {
+    grid-column: bpm_col;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.5rem;
+}
+
+#bpm_display h1 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FF3300;
+    font-size: 2rem;
+}
+
+#warning_text {
+    grid-column: warning_col;
+
     display: flex;
     flex-direction: column;
     align-items: center;   /* horizontale Zentrierung */
@@ -82,16 +112,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.warning_text h2,
-.warning_text h3 {
+#warning_text h2,
+#warning_text h3 {
     margin: 0;
 }
 
-#heart_icon {
-    filter: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(5901%) hue-rotate(358deg) brightness(99%) contrast(104%);
-    scale: 0.8;
-    padding-left: 0.5vw;
-}
+
 
 .timer-container {
     grid-column: side_col / end_col;

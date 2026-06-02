@@ -125,10 +125,13 @@
   <div class="stress_warning">
       <img id="heart_icon" src={heart_icon} alt="heart icon">
 
-      <div class="warning_text">
+      <div id="bpm_display">
+          <h1>{heartRate} bpm</h1>
+      </div>
+
+      <div id="warning_text">
           <h2>You seem stressed!</h2>
           <h3>You may be vulnerable to fraud and cyber attacks</h3>
-          <h3>{heartRate} bpm</h3>
       </div>
   </div>
 {/if}

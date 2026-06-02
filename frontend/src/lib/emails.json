@@ -128,7 +128,7 @@
     ],
     "folder": "inbox",
     "isPhishing": false,
-    "read": true,
+    "read": false,
 
     "senderSpoofed": false,
     "emailCategory": "neutral",
