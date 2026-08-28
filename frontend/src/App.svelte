@@ -105,7 +105,7 @@
 
   onDestroy(() => ws?.close());
 
-  let bmpWarning_visible = $derived(heartRate !== null && heartRate > 80);
+  let bmpWarning_visible = $derived(heartRate !== null && heartRate >= 80);
 
 </script>
 

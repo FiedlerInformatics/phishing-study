@@ -6,41 +6,11 @@
 
 ![screenshot](./screenshots/screenshot_bpm_measuring.png)
 
-# Documentation
-## Emails
-Emails are stored in `./frontend/src/lib/emails.json` with the following structure, defined in `./frontend/src/lib/types.ts` :
-``` ts
-export type EmailCategory = 'advertising' | 'neutral' | 'urgent';
-export type PhishingCategory =
-    'shared document' | 'new regulation' | 'request for password reset' |
-    'evaluation form' | 'employee survey' | 'account validation' |
-    'lottery' | 'party invitation' | 'extending software license'
-    ;
-export type ManipulationTechnique = 'stress' | 'authority' | 'helpfulness' | 'reward' | null;
-export type Difficulty = 'easy' | 'medium' | 'hard';
-export type MimickedWebsite = 'dropbox' | 'apple' | 'microsoft' | 'skype'
+# Surveys
 
-export interface BodyBlock {
-  type: string;
-  content: string;
-}
+![Demographic questionaire questionaire screenshot](./screenshots/demographic_questionaire-screenshot.png)
 
-export interface Email {
-  id: number;
-  sender: string;
-  subject: string;
-  timestamp: string;
-  preview: string;
-  body: BodyBlock;
-  folder: string;
-  isPhishing: boolean;
-  read: boolean;
-  
-  senderSpoofed: boolean;
-  
-  emailCategory: EmailCategory;
-  phishingCategory: PhishingCategory;
-  manipulationTechnique: ManipulationTechnique[];
-  difficulty: Difficulty;
-}
-```
+![ATI screenshot](./screenshots/ati-screenshot.png)
+
+![NASA task load index questionaire screenshot](./screenshots/NASA_task_load_index-screenshot.png)
+
