@@ -1,12 +1,13 @@
 import { mount } from 'svelte'
 import './app.css'
 
-import App from './App.svelte'
+//import App from './App.svelte'
 
 // Zum Testen:
 //import App from './surveys/survey_NASA-TLX.svelte'
 //import App from './surveys/survey_demographic.svelte'
-//import App from './surveys/survey_ATI.svelte'
+//import App from './lib/surveys/survey_demographic.svelte'
+import App from './lib/introductions/grand_intro.svelte'
 
 const target = document.getElementById('app')
 if (!target) {
