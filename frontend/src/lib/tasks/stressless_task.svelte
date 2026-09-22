@@ -5,7 +5,8 @@
 <script lang="ts">
   import './app.css';
 
-  import { onMount, onDestroy } from 'svelte';
+  import {onMount } from 'svelte'
+  import { connectHeartRate } from '$lib/heartRate';
   import {goto} from '$app/navigation';
 
   import email_warning from './assets/email-warning-icon.svg'
@@ -44,6 +45,26 @@
 
   const isFinalCountdown = $derived(remaining < 60000 && running);
   const isFirstWarning = $derived(remaining < 1.5 * 60000 && running)
+
+  // heart rate measurements
+  let heartRate: number | null = $state(null);
+
+  onMount(() => {
+    start();
+
+    const disconnectHeartRate = connectHeartRate((value:any) => {
+      heartRate = value;
+      console.log("heart rate: ", value)
+    });
+
+    return () => {
+      disconnectHeartRate();
+
+      if (intervalId !== undefined) {
+        clearInterval(intervalId);
+      }
+    };
+  });
 
 
   function start() {
@@ -102,17 +123,7 @@
     draggedEmail = null
   }
 
-   let heartRate: number | null = $state(null);
    let ws: WebSocket;
-
-  onMount(() => {
-    start(); // Startet den Countdown-Timer beim Laden der Seite
-
-    ws = new WebSocket('ws://localhost:8765');
-    ws.onmessage = (e) => { heartRate = Number(e.data); };
-  });
-
-  onDestroy(() => ws?.close());
 
 </script>
 

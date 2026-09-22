@@ -5,7 +5,8 @@
 <script lang="ts">
   import './app.css';
 
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
+  import { connectHeartRate } from '$lib/heartRate';
   import {goto} from '$app/navigation';
 
   import email_warning from './assets/email-warning-icon.svg'
@@ -27,6 +28,30 @@
   let emails = $state(emailsRaw.map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
+
+  const CRITICAL_HEART_RATE = 80;
+
+  let heartRate: number | null = $state(null);
+
+  const bpmWarningVisible = $derived(
+    heartRate !== null && heartRate >= CRITICAL_HEART_RATE
+  );
+
+  onMount(() => {
+    start();
+
+    const disconnectHeartRate = connectHeartRate((value) => {
+      heartRate = value;
+    });
+
+    return () => {
+      disconnectHeartRate();
+
+      if (intervalId !== undefined) {
+        clearInterval(intervalId);
+      }
+    };
+  });
 
   //Timer
   const DURATION_MS = 0.5 * 60 * 1000;
@@ -101,19 +126,6 @@ function start() {
     }
     draggedEmail = null
   }
-
-   let heartRate: number | null = $state(null);
-   let ws: WebSocket;
-
-  onMount(() => {
-    ws = new WebSocket('ws://localhost:8765');
-    ws.onmessage = (e) => { heartRate = Number(e.data); };
-  });
-
-  onDestroy(() => ws?.close());
-
-  let bmpWarning_visible = $derived(heartRate !== null && heartRate >= 80);
-
 </script>
 
 <div class="email-app">
@@ -126,21 +138,21 @@ function start() {
         </div>
     </section>
 
-  {#if bmpWarning_visible}  
-    <div class="stress_warning">
-        <img id="heart_icon" src={heart_icon} alt="heart icon">
+  {#if bpmWarningVisible}
+    <div class="stress_warning" role="alert" aria-live="polite">
+      <img id="heart_icon" src={heart_icon} alt="heart icon">
 
-        <div id="bpm_display">
-            <h1>{heartRate} bpm</h1>
-        </div>
+      <div id="bpm_display">
+        <h1>{heartRate} bpm</h1>
+      </div>
 
-        <div id="warning_text">
-            <h2>You seem stressed!</h2>
-            <h3>You may be vulnerable to fraud and cyber attacks</h3>
-        </div>
+      <div id="warning_text">
+        <h2>You seem stressed!</h2>
+        <h3>You may be vulnerable to fraud and cyber attacks</h3>
+      </div>
     </div>
   {/if}
-
+    
     <div class="timer-container">  
       <button
           class="timer-btn"
