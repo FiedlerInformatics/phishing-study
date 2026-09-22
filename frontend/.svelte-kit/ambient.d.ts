@@ -77,6 +77,7 @@ declare module '$env/static/private' {
 	export const MEMORY_PRESSURE_WATCH: string;
 	export const VTE_VERSION: string;
 	export const WAYLAND_DISPLAY: string;
+	export const FORCE_COLOR: string;
 	export const GNOME_TERMINAL_SCREEN: string;
 	export const INIT_CWD: string;
 	export const npm_lifecycle_script: string;
@@ -102,14 +103,13 @@ declare module '$env/static/private' {
 	export const DEBUGINFOD_IMA_CERT_PATH: string;
 	export const KDEDIRS: string;
 	export const XDG_DATA_DIRS: string;
+	export const npm_config_allow_scripts: string;
 	export const npm_config_noproxy: string;
 	export const PATH: string;
 	export const npm_config_node_gyp: string;
 	export const GDMSESSION: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
-	export const npm_config_python: string;
 	export const npm_config_global_prefix: string;
-	export const npm_config_update_notifier: string;
 	export const MAIL: string;
 	export const SYSTEMD_SLEEP_FREEZE_USER_SESSIONS: string;
 	export const npm_node_execpath: string;
@@ -239,6 +239,7 @@ declare module '$env/dynamic/private' {
 		MEMORY_PRESSURE_WATCH: string;
 		VTE_VERSION: string;
 		WAYLAND_DISPLAY: string;
+		FORCE_COLOR: string;
 		GNOME_TERMINAL_SCREEN: string;
 		INIT_CWD: string;
 		npm_lifecycle_script: string;
@@ -264,14 +265,13 @@ declare module '$env/dynamic/private' {
 		DEBUGINFOD_IMA_CERT_PATH: string;
 		KDEDIRS: string;
 		XDG_DATA_DIRS: string;
+		npm_config_allow_scripts: string;
 		npm_config_noproxy: string;
 		PATH: string;
 		npm_config_node_gyp: string;
 		GDMSESSION: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
-		npm_config_python: string;
 		npm_config_global_prefix: string;
-		npm_config_update_notifier: string;
 		MAIL: string;
 		SYSTEMD_SLEEP_FREEZE_USER_SESSIONS: string;
 		npm_node_execpath: string;

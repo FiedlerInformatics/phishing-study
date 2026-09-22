@@ -168,7 +168,9 @@
       </p>
       <a
         class="action-link"
-        href="/survey_demographic_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="/surveys_routes/survey_demographic-route"
       > Open the demographic questionnaire
       </a>
     </section>

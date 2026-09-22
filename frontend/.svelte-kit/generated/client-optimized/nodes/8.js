@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/introductions_routes/task-stressless_intro-route/+page.svelte";

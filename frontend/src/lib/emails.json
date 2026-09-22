@@ -8,7 +8,7 @@
     "body": [
       {
         "type": "image",
-        "src": "./src/assets/email_assets/dropbox-logo.png",
+        "src": "/email_assets/dropbox-logo.png",
         "alt": "dropbox logo",
         "width": 375
       },
@@ -190,7 +190,7 @@
     "body": [
       {
         "type":"image",
-        "src": "./src/assets/email_assets/OneDrive-Symbol.png",
+        "src": "/email_assets/OneDrive-Symbol.png",
         "alt": "onedrive logo",
         "width": 150
       },
@@ -231,7 +231,7 @@
     "body": [
       {
         "type":"image",
-        "src": "./src/assets/email_assets/apple-logo.png",
+        "src": "/email_assets/apple-logo.png",
         "alt": "apple logo",
         "width": 75
       },
@@ -303,7 +303,7 @@
     "body": [
       {
         "type": "image",
-        "src": "./src/assets/email_assets/microsoft-logo.png",
+        "src": "/email_assets/microsoft-logo.png",
         "alt": "microsoft logo",
         "width": 275
       },

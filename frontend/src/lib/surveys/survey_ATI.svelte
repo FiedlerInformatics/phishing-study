@@ -1,4 +1,6 @@
 <script>
+    import { goto } from '$app/navigation';
+
     let ati_01_value = -1;
     let ati_02_value = -1;
     let ati_03_value = -1;
@@ -39,6 +41,12 @@
         console.log(ati_01_value, ati_02_value, ati_03_value, ati_04_value, ati_05_value, ati_06_value, ati_07_value, ati_08_value, ati_09_value);
 
         showValidationWarning = invalidFields.length > 0;
+
+        if (showValidationWarning) {
+            return;
+        } else {
+            goto('/introductions_routes/end-route');
+        }
     }
 
 </script>
@@ -435,8 +443,8 @@
             <input type="submit"
                    value="Submit" 
                    on:click|preventDefault={validateForm}
-            />
-
+            >
+                      
         </div>
 
     </div>

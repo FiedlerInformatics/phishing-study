@@ -1,0 +1,289 @@
+{
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "name": "internal",
+    "src": ".svelte-kit/generated/server/internal.js",
+    "isEntry": true,
+    "imports": [
+      "_internal.js",
+      "_internal2.js"
+    ]
+  },
+  "_Button_start.BLNK1Qmd.css": {
+    "file": "_app/immutable/assets/Button_start.BLNK1Qmd.css",
+    "src": "_Button_start.BLNK1Qmd.css"
+  },
+  "_Button_start.js": {
+    "file": "chunks/Button_start.js",
+    "name": "Button_start",
+    "imports": [
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Button_start.BLNK1Qmd.css"
+    ]
+  },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_internal.js",
+      "_internal2.js",
+      "_exports.js",
+      "_shared.js",
+      "_server.js"
+    ]
+  },
+  "_env.js": {
+    "file": "chunks/env.js",
+    "name": "env"
+  },
+  "_exports.js": {
+    "file": "chunks/exports.js",
+    "name": "exports",
+    "imports": [
+      "_server.js"
+    ]
+  },
+  "_grand_intro.CjGj5kL-.css": {
+    "file": "_app/immutable/assets/grand_intro.CjGj5kL-.css",
+    "src": "_grand_intro.CjGj5kL-.css"
+  },
+  "_grand_intro.js": {
+    "file": "chunks/grand_intro.js",
+    "name": "grand_intro",
+    "imports": [
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/grand_intro.CjGj5kL-.css"
+    ]
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "name": "internal",
+    "imports": [
+      "_internal2.js",
+      "_server.js"
+    ]
+  },
+  "_internal2.js": {
+    "file": "chunks/internal2.js",
+    "name": "internal"
+  },
+  "_navigation.js": {
+    "file": "chunks/navigation.js",
+    "name": "navigation",
+    "imports": [
+      "_client.js"
+    ]
+  },
+  "_server.js": {
+    "file": "chunks/server.js",
+    "name": "server"
+  },
+  "_shared.js": {
+    "file": "chunks/shared.js",
+    "name": "shared"
+  },
+  "_state.js": {
+    "file": "chunks/state.js",
+    "name": "state",
+    "imports": [
+      "_internal.js",
+      "_client.js",
+      "_server.js"
+    ]
+  },
+  "_utils.js": {
+    "file": "chunks/utils.js",
+    "name": "utils",
+    "imports": [
+      "_shared.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js": {
+    "file": "remote-entry.js",
+    "name": "remote-entry",
+    "src": "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js",
+    "isEntry": true,
+    "imports": [
+      "_utils.js",
+      "_internal2.js",
+      "_shared.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "name": "entries/fallbacks/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_state.js",
+      "_server.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte": {
+    "file": "entries/fallbacks/layout.svelte.js",
+    "name": "entries/fallbacks/layout.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "name": "index",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_internal.js",
+      "_env.js",
+      "_utils.js",
+      "_internal2.js",
+      "_exports.js",
+      "_shared.js",
+      "_server.js"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "name": "entries/pages/_page.svelte",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js",
+      "_grand_intro.js"
+    ]
+  },
+  "src/routes/introductions_routes/NASA-TLX_intro-route/+page.svelte": {
+    "file": "entries/pages/introductions_routes/NASA-TLX_intro-route/_page.svelte.js",
+    "name": "entries/pages/introductions_routes/NASA-TLX_intro-route/_page.svelte",
+    "src": "src/routes/introductions_routes/NASA-TLX_intro-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_state.js",
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.Cm_dg2XU.css"
+    ]
+  },
+  "src/routes/introductions_routes/NASA-TLX_intro_stress-route/+page.svelte": {
+    "file": "entries/pages/introductions_routes/NASA-TLX_intro_stress-route/_page.svelte.js",
+    "name": "entries/pages/introductions_routes/NASA-TLX_intro_stress-route/_page.svelte",
+    "src": "src/routes/introductions_routes/NASA-TLX_intro_stress-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DbI4F543.css"
+    ]
+  },
+  "src/routes/introductions_routes/end-route/+page.svelte": {
+    "file": "entries/pages/introductions_routes/end-route/_page.svelte.js",
+    "name": "entries/pages/introductions_routes/end-route/_page.svelte",
+    "src": "src/routes/introductions_routes/end-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ]
+  },
+  "src/routes/introductions_routes/grand_intro-route/+page.svelte": {
+    "file": "entries/pages/introductions_routes/grand_intro-route/_page.svelte.js",
+    "name": "entries/pages/introductions_routes/grand_intro-route/_page.svelte",
+    "src": "src/routes/introductions_routes/grand_intro-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js",
+      "_grand_intro.js"
+    ]
+  },
+  "src/routes/introductions_routes/task-stress_intro-route/+page.svelte": {
+    "file": "entries/pages/introductions_routes/task-stress_intro-route/_page.svelte.js",
+    "name": "entries/pages/introductions_routes/task-stress_intro-route/_page.svelte",
+    "src": "src/routes/introductions_routes/task-stress_intro-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.B_BaOJ1c.css"
+    ]
+  },
+  "src/routes/introductions_routes/task-stressless_intro-route/+page.svelte": {
+    "file": "entries/pages/introductions_routes/task-stressless_intro-route/_page.svelte.js",
+    "name": "entries/pages/introductions_routes/task-stressless_intro-route/_page.svelte",
+    "src": "src/routes/introductions_routes/task-stressless_intro-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BfGPiJcw.css"
+    ]
+  },
+  "src/routes/surveys_routes/NASA-TLX_survey-route/+page.svelte": {
+    "file": "entries/pages/surveys_routes/NASA-TLX_survey-route/_page.svelte.js",
+    "name": "entries/pages/surveys_routes/NASA-TLX_survey-route/_page.svelte",
+    "src": "src/routes/surveys_routes/NASA-TLX_survey-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_navigation.js",
+      "_state.js",
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BkDlYKwh.css"
+    ]
+  },
+  "src/routes/surveys_routes/survey_demographic-route/+page.svelte": {
+    "file": "entries/pages/surveys_routes/survey_demographic-route/_page.svelte.js",
+    "name": "entries/pages/surveys_routes/survey_demographic-route/_page.svelte",
+    "src": "src/routes/surveys_routes/survey_demographic-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_navigation.js",
+      "_server.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.V7CVGAmo.css"
+    ]
+  },
+  "src/routes/task_routes/task-stress-route/+page.svelte": {
+    "file": "entries/pages/task_routes/task-stress-route/_page.svelte.js",
+    "name": "entries/pages/task_routes/task-stress-route/_page.svelte",
+    "src": "src/routes/task_routes/task-stress-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_internal.js",
+      "_navigation.js",
+      "_server.js",
+      "_Button_start.js"
+    ]
+  },
+  "src/routes/task_routes/task-stressless-route/+page.svelte": {
+    "file": "entries/pages/task_routes/task-stressless-route/_page.svelte.js",
+    "name": "entries/pages/task_routes/task-stressless-route/_page.svelte",
+    "src": "src/routes/task_routes/task-stressless-route/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_internal.js",
+      "_navigation.js",
+      "_client.js",
+      "_server.js",
+      "_Button_start.js"
+    ]
+  },
+  "virtual:__sveltekit/env": {
+    "file": "env.js",
+    "name": "env",
+    "src": "virtual:__sveltekit/env",
+    "isEntry": true,
+    "imports": [
+      "_env.js"
+    ]
+  }
+}

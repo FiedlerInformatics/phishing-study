@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/introductions_routes/NASA-TLX_intro_stress-route/+page.svelte";

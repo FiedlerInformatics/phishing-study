@@ -152,6 +152,7 @@
       {/if}
   </button>
   </div>
+  
   <section class="tool_sidebar">
     <div
       id="inbox"

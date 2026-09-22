@@ -1,4 +1,8 @@
 <script>
+
+  //import {navigate} from "svelte-routing";
+  import {goto} from '$app/navigation';
+
   let gender = '';
   let age = '';
   let maritalStatus = '';
@@ -50,6 +54,10 @@
     console.log(gender, age, maritalStatus, householdSize, educationLevel, vocationalEducation, employmentStatus, occupation, income, nationality, migrationBackground, region);
 
     showValidationWarning = invalidFields.length > 0;
+
+    if (invalidFields.length === 0) {
+      goto('/introductions_routes/task-stressless_intro-route');
+    }
 
     return invalidFields.length === 0;
   }

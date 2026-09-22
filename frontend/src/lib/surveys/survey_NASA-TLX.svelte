@@ -1,4 +1,11 @@
 <script>
+    import {goto} from '$app/navigation';
+
+    let participant_id = -1;
+    export let condition = null;         // Stress oder Stressless
+    let start = -1;
+    let finish = -1;
+
     let value_mental_demand = -1;
     let value_physical_demand = -1;
     let value_temporal_demand = -1;
@@ -8,6 +15,9 @@
 
     let showValidationWarning = false;
     let value_id_arr = [];
+
+    const conditionIsValid = 
+        condition === "stress" || condition === "stressless";   // 'condition' darf nur stress oder stressless sein
 
     function changeNULLValue(val) {
         if (val === -1) return 0;
@@ -30,13 +40,23 @@
             {value: value_performance, id: 'performance_input'},
             {value: value_effort, id: 'effort_input'},
             {value: value_frustration, id: 'frustration_input'}
-        ]
+        ];
 
         invalidFields = value_id_arr
             .filter( (field) => isEmpty(field.value))
             .map((field) => field.id );
         
         showValidationWarning = invalidFields.length > 0;
+
+        if (showValidationWarning) {
+            return;
+        }
+
+         if (condition === 'stressless') {
+            goto('/introductions_routes/task-stress_intro-route');
+        } else if (condition === 'stress') {
+            goto('/introductions_routes/ATI_intro-route');
+        }
 
         console.log(invalidFields)
     }
@@ -47,8 +67,8 @@
 
         console.log(valueArr);
     }
-
 </script>
+
 <style>
     * {
         font-family: Arial, Helvetica, sans-serif;
