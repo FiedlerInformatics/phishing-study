@@ -20,6 +20,7 @@
   import tag_icon from './assets/tag-icon.svg'
   import star_icon from './assets/star-icon.svg'
   import heart_icon from './assets/heart-icon.svg'
+  import importantMail_icon from './assets/important_mail-icon.svg'
   import emailsRaw from '$lib/emails.json'
 
   import Button_start from '$lib/components/Button_start.svelte';
@@ -189,92 +190,87 @@ function start() {
       </div>
 
       <div
-        id="junk"
+        id="important"
         class="sidebar_item"
-        class:active={activeFolder === 'junk'}
+        class:active={activeFolder === 'important'}
         role="button"
         tabindex="0"
-        onclick={() => selectFolder('junk')}
-        onkeydown={e => e.key === 'Enter' && selectFolder('junk')}
+        onclick={() => selectFolder('important')}
+        onkeydown={e => e.key === 'Enter' && selectFolder('important')}
         
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('junk')}
+        ondrop={() => onDrop('important')}
+      >
+        <img class="icon" src={importantMail_icon} alt="" aria-hidden="true">
+        <h4>Important</h4>
+      </div>
+
+      <div
+        id="spam"
+        class="sidebar_item"
+        class:active={activeFolder === 'spam'}
+        role="button"
+        tabindex="0"
+        onclick={() => selectFolder('spam')}
+        onkeydown={e => e.key === 'Enter' && selectFolder('spam')}
+
+        class:drop_target={draggedEmail != null}
+        ondragover={(e) => e.preventDefault()}
+        ondrop={() => onDrop('spam')}
       >
         <img class="icon" src={email_warning} alt="" aria-hidden="true">
-        <h4>Junk Email</h4>
+        <h4>Spam</h4>
       </div>
 
       <div
-        id="starred"
+        id="neutral"
         class="sidebar_item"
-        class:active={activeFolder === 'starred'}
+        class:active={activeFolder === 'neutral'}
         role="button"
         tabindex="0"
-        onclick={() => selectFolder('starred')}
-        onkeydown={e => e.key === 'Enter' && selectFolder('starred')}
-
-        class:drop_target={draggedEmail != null}
-        ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('starred')}
-      >
-        <img class="icon" src={star_icon} alt="" aria-hidden="true">
-        <h4>Starred</h4>
-      </div>
-
-      <div
-        id="drafts"
-        class="sidebar_item"
-        class:active={activeFolder === 'drafts'}
-        role="button"
-        tabindex="0"
-        onclick={() => selectFolder('drafts')}
-        onkeydown={e => e.key === 'Enter' && selectFolder('drafts')}
+        onclick={() => selectFolder('neutral')}
+        onkeydown={e => e.key === 'Enter' && selectFolder('neutral')}
         
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('drafts')}
+        ondrop={() => onDrop('neutral')}
       >
-        <img class="icon" src={mail_alert_icon} alt="" aria-hidden="true">
-        <h4>Drafts</h4>
+        <img class="icon" src={mail_icon} alt="" aria-hidden="true">
+        <h4>Neutral</h4>
       </div>
 
       <div
-        id="sent_items"
+        id="bin"
+        class="sidebar_item"
+        class:active={activeFolder === 'bin'}
+        role="button"
+        tabindex="0"
+        onclick={() => selectFolder('bin')}
+        onkeydown={e => e.key === 'Enter' && selectFolder('bin')}
+
+        class:drop_target={draggedEmail != null}
+        ondragover={(e) => e.preventDefault()}
+        ondrop={() => onDrop('bin')}
+
+      >
+        <img class="icon" src={trash_icon} alt="" aria-hidden="true">
+        <h4>Bin</h4>
+      </div>
+
+      <div
+        id="sent"
         class="sidebar_item"
         class:active={activeFolder === 'sent'}
         role="button"
         tabindex="0"
         onclick={() => selectFolder('sent')}
         onkeydown={e => e.key === 'Enter' && selectFolder('sent')}
-
-        class:drop_target={draggedEmail != null}
-        ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('send_items')}
-
       >
         <img class="icon" src={send_email_icon} alt="" aria-hidden="true">
-        <h4>Sent items</h4>
+        <h4>Sent</h4>
       </div>
-
-      <div
-        id="deleted"
-        class="sidebar_item"
-        class:active={activeFolder === 'deleted'}
-        role="button"
-        tabindex="0"
-        onclick={() => selectFolder('deleted')}
-        onkeydown={e => e.key === 'Enter' && selectFolder('deleted')}
-
-        class:drop_target={draggedEmail != null}
-        ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('deleted')}
-
-      >
-        <img class="icon" src={trash_icon} alt="" aria-hidden="true">
-        <h4>Deleted</h4>
-      </div>
-
+     
       <div
         id="archive"
         class="sidebar_item"
@@ -318,7 +314,7 @@ function start() {
         <h4>Tags</h4>
       </div>
     </section>
-
+    
     <section class="email_window">
 
       <ul class="email_list" role="list">

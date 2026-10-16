@@ -31,7 +31,7 @@
   let activeFolder = $state('inbox')
 
   //Timer
-  const DURATION_MS = 0.5 * 60 * 1000;
+  const DURATION_MS = 0 * 60 * 1000;
 
   let { sessionId, remaining = $bindable(DURATION_MS) } = $props();
 
@@ -227,17 +227,13 @@
       </div>
 
       <div
-        id="sent_items"
+        id="sent"
         class="sidebar_item"
         class:active={activeFolder === 'sent'}
         role="button"
         tabindex="0"
         onclick={() => selectFolder('sent')}
         onkeydown={e => e.key === 'Enter' && selectFolder('sent')}
-
-        class:drop_target={draggedEmail != null}
-        ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('send_items')}
       >
         <img class="icon" src={send_email_icon} alt="" aria-hidden="true">
         <h4>Sent</h4>
