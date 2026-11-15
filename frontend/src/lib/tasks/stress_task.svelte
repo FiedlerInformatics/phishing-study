@@ -6,7 +6,9 @@
   import './app.css';
 
   import { onMount } from 'svelte';
-  import { connectHeartRate } from '$lib/heartRate';
+  /**Startet JavaScript: window.addEventListener('mousemove', onMove, { passive: true });*/
+  import { track, flush, startMouse, stopMouse } from '$lib/tracker'; 
+  import { hr } from '$lib/hrState.svelte.js';
   import {goto} from '$app/navigation';
 
   import email_warning from './assets/email-warning-icon.svg'
@@ -32,21 +34,21 @@
 
   const CRITICAL_HEART_RATE = 80;
 
-  let heartRate: number | null = $state(null);
+  // HR kommt aus dem Layout (einzige Verbindung zum Gurt)
+  const heartRate = $derived(hr.bpm);
 
   const bpmWarningVisible = $derived(
     heartRate !== null && heartRate >= CRITICAL_HEART_RATE
   );
 
+
+  /* Lädt die Seite */
   onMount(() => {
+    startMouse();
     start();
 
-    const disconnectHeartRate = connectHeartRate((value) => {
-      heartRate = value;
-    });
-
     return () => {
-      disconnectHeartRate();
+      stopMouse();
 
       if (intervalId !== undefined) {
         clearInterval(intervalId);
@@ -55,9 +57,9 @@
   });
 
   //Timer
-  const DURATION_MS = 0.5 * 60 * 1000;
+  const DURATION_MS = 3 * 60 * 1000;
 
-  let { sessionId, remaining = $bindable(DURATION_MS) } = $props();
+  let { remaining = $bindable(DURATION_MS) } = $props();
 
   let running = $state(false);
   let intervalId: ReturnType<typeof setInterval> | undefined;
@@ -75,15 +77,19 @@
 function start() {
     if (running) return;
     running = true;
+    track('task_start', { data: { durationMs: DURATION_MS } });
 
-    intervalId = setInterval(() => {
+    intervalId = setInterval(async () => {
       remaining -= 10;
       
-      if (remaining <= 0) {
+      if (remaining <= 0) { /**Wenn die Zeit abgelaufen ist, werden die Daten per flush() versendet*/
         remaining = 0;
         clearInterval(intervalId);
         running = false;
 
+        stopMouse();
+        track('task_end', { data: Object.fromEntries(emails.map((e) => [e.id, e.folder])) });
+        await flush();
         goto('/introductions_routes/NASA-TLX_intro_stress-route?condition=stress');
       }
     }, 10);
@@ -93,12 +99,14 @@ function start() {
   function selectEmail(email) {
     selectedEmail = email
     email.read = true
+    track('email_open', { emailId: email.id })
   }
 
   /** @param {string} folder */
   function selectFolder(folder) {
     activeFolder = folder
     selectedEmail = null
+    track('folder_open', { folder })
   }
 
   let visibleEmails = $derived(emails.filter(e => e.folder === activeFolder))
@@ -117,10 +125,12 @@ function start() {
 
   function onDragStart(email) {
     draggedEmail = email
+    track('drag_start', { emailId: email.id, folder: email.folder })
   }
 
   function onDrop(folder) {
     if (!draggedEmail) return
+    track('drop', { emailId: draggedEmail.id, folder, data: { from: draggedEmail.folder } })
     draggedEmail.folder = folder
     if (selectedEmail?.id === draggedEmail.id && folder !== activeFolder) {
       selectedEmail = null
@@ -325,6 +335,7 @@ function start() {
             class:unread={!email.read}
             draggable="true"
             ondragstart={() => onDragStart(email)}
+            ondragend={() => draggedEmail && track('drag_cancel', { emailId: draggedEmail.id })}
             role="button"
             tabindex="0"
             onclick={() => selectEmail(email)}
@@ -370,7 +381,7 @@ function start() {
                     href={part.href}
                     onclick={(e) => {
                       e.preventDefault()
-                      console.log({ type: 'link_clicked', href: part.href, emailId: selectedEmail.id, ts: Date.now() })
+                      track('link_click', { emailId: selectedEmail.id, data: { href: part.href } })
                     }}
                   >
                     {part.text}

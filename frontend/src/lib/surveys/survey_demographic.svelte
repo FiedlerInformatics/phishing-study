@@ -2,6 +2,11 @@
 
   //import {navigate} from "svelte-routing";
   import {goto} from '$app/navigation';
+  import { submitResponses } from '$lib/api';
+
+  const startedAt = Date.now();
+  let saveError = '';
+  let saving = false;
 
   let gender = '';
   let age = '';
@@ -28,7 +33,7 @@
     );
   }
 
-  function validateForm(event) {
+  async function validateForm(event) {
 
     if (event) event.preventDefault();
 
@@ -55,11 +60,25 @@
 
     showValidationWarning = invalidFields.length > 0;
 
-    if (invalidFields.length === 0) {
-      goto('/introductions_routes/task-stressless_intro-route');
-    }
+    if (invalidFields.length > 0 || saving) return false;
 
-    return invalidFields.length === 0;
+    saving = true;
+    saveError = '';
+    try {
+      await submitResponses('demographic', 'main', {
+        gender, age, marital_status: maritalStatus, household_size: householdSize,
+        education_level: educationLevel, vocational_education: vocationalEducation,
+        employment_status: employmentStatus, occupation, income, nationality,
+        migration_background: migrationBackground, region
+      }, startedAt);
+      goto('/introductions_routes/task-stressless_intro-route');
+      return true;
+    } catch (e) {
+      console.error(e);
+      saveError = 'Your answers could not be saved. Please inform the study leader.';
+      saving = false;
+      return false;
+    }
   }
 
 </script>
@@ -509,10 +528,14 @@
           Please fill out all fields before submitting the survey
         </div>
       {/if}
+      {#if saveError}
+        <div class="validation-warning">{saveError}</div>
+      {/if}
 
       <input
         type="submit"
         value="Submit"
+        disabled={saving}
         on:click|preventDefault={validateForm}
       />
 

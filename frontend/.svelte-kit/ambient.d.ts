@@ -77,7 +77,6 @@ declare module '$env/static/private' {
 	export const MEMORY_PRESSURE_WATCH: string;
 	export const VTE_VERSION: string;
 	export const WAYLAND_DISPLAY: string;
-	export const FORCE_COLOR: string;
 	export const GNOME_TERMINAL_SCREEN: string;
 	export const INIT_CWD: string;
 	export const npm_lifecycle_script: string;
@@ -91,6 +90,7 @@ declare module '$env/static/private' {
 	export const LESSOPEN: string;
 	export const USER: string;
 	export const GNOME_TERMINAL_SERVICE: string;
+	export const CONDA_SHLVL: string;
 	export const DISPLAY: string;
 	export const npm_lifecycle_event: string;
 	export const SHLVL: string;
@@ -239,7 +239,6 @@ declare module '$env/dynamic/private' {
 		MEMORY_PRESSURE_WATCH: string;
 		VTE_VERSION: string;
 		WAYLAND_DISPLAY: string;
-		FORCE_COLOR: string;
 		GNOME_TERMINAL_SCREEN: string;
 		INIT_CWD: string;
 		npm_lifecycle_script: string;
@@ -253,6 +252,7 @@ declare module '$env/dynamic/private' {
 		LESSOPEN: string;
 		USER: string;
 		GNOME_TERMINAL_SERVICE: string;
+		CONDA_SHLVL: string;
 		DISPLAY: string;
 		npm_lifecycle_event: string;
 		SHLVL: string;

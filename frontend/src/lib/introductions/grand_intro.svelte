@@ -1,3 +1,25 @@
+<script>
+  import { goto } from '$app/navigation';
+  import { createSession } from '$lib/api';
+
+  let error = $state('');
+  let busy = $state(false);
+
+  async function begin() {
+    if (busy) return;          // Doppelklick erzeugt sonst zwei Sessions
+    busy = true;
+    error = '';
+    try {
+      await createSession('stressless-first');
+      goto('/surveys_routes/survey_demographic-route');
+    } catch (e) {
+      error = 'Unable to reach server, please inform the study leader.';
+      console.error(e);
+      busy = false;
+    }
+  }
+</script>
+
 <style>
   * {
     font-family: Arial, Helvetica, sans-serif;
@@ -84,6 +106,18 @@
     font-size: 1.15rem;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
+  }
+
+  .action-link:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
+  .error {
+    color: #b00020;
+    font-weight: bold;
+    margin-top: 0.75rem;
   }
 
   .action-link:hover,
@@ -162,17 +196,14 @@
     <section class="content_box next_step">
       <h2>First step</h2>
       <p>
-        The link below opens the demographic questionnaire. Please enter your
+        The button below opens the demographic questionnaire. Please enter your
         answers, complete every field, and select <strong>Submit</strong> to
         continue to the next part of the study.
       </p>
-      <a
-        class="action-link"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="/surveys_routes/survey_demographic-route"
-      > Open the demographic questionnaire
-      </a>
+      <button class="action-link" onclick={begin} disabled={busy}>
+        Open the demographic questionnaire
+      </button>
+      {#if error}<p class="error">{error}</p>{/if}
     </section>
   </main>
 </div>

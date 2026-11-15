@@ -1,5 +1,10 @@
 <script>
     import { goto } from '$app/navigation';
+    import { submitResponses } from '$lib/api';
+
+    const startedAt = Date.now();
+    let saveError = '';
+    let saving = false;
 
     let ati_01_value = -1;
     let ati_02_value = -1;
@@ -18,7 +23,7 @@
         return (value === -1);
     }
 
-    function validateForm(event) {
+    async function validateForm(event) {
 
         if (event) event.preventDefault();
 
@@ -42,10 +47,21 @@
 
         showValidationWarning = invalidFields.length > 0;
 
-        if (showValidationWarning) {
-            return;
-        } else {
+        if (showValidationWarning || saving) return;
+
+        saving = true;
+        saveError = '';
+        try {
+            await submitResponses('ati', 'main', {
+                ati_01: ati_01_value, ati_02: ati_02_value, ati_03: ati_03_value,
+                ati_04: ati_04_value, ati_05: ati_05_value, ati_06: ati_06_value,
+                ati_07: ati_07_value, ati_08: ati_08_value, ati_09: ati_09_value
+            }, startedAt);
             goto('/introductions_routes/end-route');
+        } catch (e) {
+            console.error(e);
+            saveError = 'Your answers could not be saved. Please inform the study leader.';
+            saving = false;
         }
     }
 
@@ -439,9 +455,13 @@
                     <p>Please answer all questions before submitting the survey</p>
                 </div>
             {/if}
+            {#if saveError}
+                <div class="validation-warning">{saveError}</div>
+            {/if}
 
             <input type="submit"
                    value="Submit" 
+                   disabled={saving}
                    on:click|preventDefault={validateForm}
             >
                       

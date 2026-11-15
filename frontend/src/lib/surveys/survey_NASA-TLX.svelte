@@ -1,5 +1,10 @@
 <script>
     import {goto} from '$app/navigation';
+    import { submitResponses } from '$lib/api';
+
+    const startedAt = Date.now();
+    let saveError = '';
+    let saving = false;
 
     let participant_id = -1;
     export let condition = null;         // Stress oder Stressless
@@ -30,7 +35,7 @@
         return (val === -1);
     }
 
-    function checkCompletenes(event) {
+    async function checkCompletenes(event) {
         if (event) event.preventDefault();
 
         const value_id_arr= [
@@ -48,7 +53,25 @@
         
         showValidationWarning = invalidFields.length > 0;
 
-        if (showValidationWarning) {
+        if (showValidationWarning || saving) {
+            return;
+        }
+
+        saving = true;
+        saveError = '';
+        try {
+            await submitResponses('nasa-tlx', condition, {
+                mental_demand: value_mental_demand,
+                physical_demand: value_physical_demand,
+                temporal_demand: value_temporal_demand,
+                performance: value_performance,
+                effort: value_effort,
+                frustration: value_frustration
+            }, startedAt);
+        } catch (e) {
+            console.error(e);
+            saveError = 'Your answers could not be saved. Please inform the study leader.';
+            saving = false;
             return;
         }
 
@@ -243,9 +266,13 @@
                     Please answer all questions before submitting the survey
                 </div>
             {/if}
-            
+            {#if saveError}
+                <div class="validation-warning">{saveError}</div>
+            {/if}
+
             <input
                 type="submit" value= Submit
+                disabled={saving}
                 on:click|preventDefault={checkCompletenes}
             >
         </div>

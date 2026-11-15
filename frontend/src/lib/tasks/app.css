@@ -208,6 +208,13 @@
   background: #f0f4ff;
 }
 
+/*Dünner Rahmen während drag-and-drop der E-mails*/
+.email-app .sidebar_item.drop_target:hover {
+  background: #f0f4ff;
+  outline: 1px solid #003b6f;
+  outline-offset: -1px;
+}
+
   .email-app .email_row:hover {
     background: #f0f4ff;
   }

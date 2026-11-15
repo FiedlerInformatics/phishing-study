@@ -1,3 +1,11 @@
+<script>
+  import { onMount } from 'svelte';
+  import { finishSession } from '$lib/api';
+
+  // markiert die Session als vollständig (sessions.finished_at)
+  onMount(() => { finishSession().catch(console.error); });
+</script>
+
 <style>
   * {
     font-family: Arial, Helvetica, sans-serif;
