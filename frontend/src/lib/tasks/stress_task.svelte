@@ -28,7 +28,9 @@
   import Button_start from '$lib/components/Button_start.svelte';
   import {timer} from '$lib/timer.svelte'
 
-  let emails = $state(emailsRaw.map(e => ({ ...e })))
+  //let emails = $state(emailsRaw.map(e => ({ ...e })))
+  // Auswahl des Set 'B' aus email.json
+  let emails = $state(emailsRaw.filter(e => e.set === 'B').map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
 

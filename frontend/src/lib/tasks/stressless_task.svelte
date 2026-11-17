@@ -26,12 +26,14 @@
   import Button_start from '$lib/components/Button_start.svelte';
   import {timer} from '$lib/timer.svelte'
 
-  let emails = $state(emailsRaw.map(e => ({ ...e })))
+  //let emails = $state(emailsRaw.map(e => ({ ...e })))
+  // Auswahl des Set 'A' aus emails.json
+  let emails = $state(emailsRaw.filter(e => e.set === 'A').map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
 
   //Timer
-  const DURATION_MS = 3 * 60 * 1000;
+  const DURATION_MS = 500 * 60 * 1000;
 
   let { remaining = $bindable(DURATION_MS) } = $props();
 
@@ -225,20 +227,7 @@
         <img class="icon" src={trash_icon} alt="" aria-hidden="true">
         <h4>Bin</h4>
       </div>
-
-      <div
-        id="sent"
-        class="sidebar_item"
-        class:active={activeFolder === 'sent'}
-        role="button"
-        tabindex="0"
-        onclick={() => selectFolder('sent')}
-        onkeydown={e => e.key === 'Enter' && selectFolder('sent')}
-      >
-        <img class="icon" src={send_email_icon} alt="" aria-hidden="true">
-        <h4>Sent</h4>
-      </div>
-     
+    
       <div
         id="archive"
         class="sidebar_item"
@@ -256,6 +245,19 @@
         <h4>Archive</h4>
       </div>
 
+      <div
+        id="sent"
+        class="sidebar_item"
+        class:active={activeFolder === 'sent'}
+        role="button"
+        tabindex="0"
+        onclick={() => selectFolder('sent')}
+        onkeydown={e => e.key === 'Enter' && selectFolder('sent')}
+      >
+        <img class="icon" src={send_email_icon} alt="" aria-hidden="true">
+        <h4>Sent</h4>
+      </div>
+ 
       <div
         id="notes"
         class="sidebar_item"

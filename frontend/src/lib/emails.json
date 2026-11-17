@@ -1,10 +1,11 @@
 [
   {
     "id": 1,
-    "sender": "Dropbox Security Support <info@dropbox.com>",
+    "set:": "A",
+    "sender": "info@dropbox.com",
     "subject": "Droppbox Notification",
     "timestamp": "2021-05-12T12:43:00",
-    "preview": "Dropbox Security Notification",
+    "preview": "Dear John Doe, Our security system has detected some irregular ...",
     "body": [
       {
         "type": "image",
@@ -32,19 +33,15 @@
     ],
     "folder": "inbox",
     "isPhishing": false,
-    "read": false,
-    "senderSpoofed": false,
-    "emailCategory": "neutral",
-    "phishingCategory": "request for password reset",
-    "manipulationTechnique": ["authority"],
-    "difficulty": "hard"
+    "read": false
   },
   {
     "id": 2,
+    "set": "B",
     "sender": "GlobalConnect Team",
     "subject": "important! Company Evaluation!",
     "timestamp": "2025-12-13T07:47:00",
-    "preview": "Please fill out this company evaluation",
+    "preview": "Dear John Doe, we urge you to complete the following company ...",
     "body": [
       {
         "type": "paragraph",
@@ -66,20 +63,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": true,
-    "emailCategory": "neutral",
-    "phishingCategory": "evaluation form",
-    "manipulationTechnique": ["authority","stress"],
-    "difficulty": "medium"
+    "read": false
   },
   {
     "id": 3,
+    "set": "A",
     "sender": "GlobalConnect Team",
-    "subject": "Quick Empliyee Survey",
+    "subject": "Quick Employee Survey",
     "timestamp": "2021-08-03T11:06:25",
-    "preview": "Quick Employee Survey",
+    "preview": "Dear John Doe, We are conducting an employee survey this year to ...",
     "body": [
       {
         "type": "paragraph",
@@ -101,20 +93,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": true,
-    "emailCategory": "neutral",
-    "phishingCategory": "employee survey",
-    "manipulationTechnique": ["authority","stress"],
-    "difficulty": "medium"
+    "read": false
   },
   {
     "id": 4,
+    "set": "B",
     "sender": "Max Miller <maxmiller@globalconnect.com>",
     "subject": "RE: Document meeting urgent!",
     "timestamp": "2025-04-27T04:12:00",
-    "preview": "below is the link...",
+    "preview": "Hey, below is the link to the important document for the next ...",
     "body": [
       {
         "type": "paragraph",
@@ -128,22 +115,15 @@
     ],
     "folder": "inbox",
     "isPhishing": false,
-    "read": false,
-
-    "senderSpoofed": false,
-    "emailCategory": "neutral",
-    "phishingCategory": "shared document",
-    "manipulationTechnique": ["stress"],
-    "difficulty": "hard",
-    "mimickedWebsite": null
-
+    "read": false
   },
   {
     "id": 5,
+    "set": "A",
     "sender": "management@glubalconnect.com",
     "subject": "Earn extra money",
     "timestamp": "2020-12-18T03:40:00",
-    "preview": "Great things are planned for this year's foundation anniversary...",
+    "preview": "Dear colleagues, Great things are planned for this year's foundation ...",
     "body": [
       {
         "type": "paragraph",
@@ -173,20 +153,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": true,
-    "emailCategory": "neutral",
-    "phishingCategory": "evaluation form",
-    "manipulationTechnique": ["reward","stress"],
-    "difficulty": "easy"
+    "read": false
   },
   {
     "id": 6,
+    "set": "A",
     "sender": "One Drive Support",
     "subject": "UPDATE OneDrive: Validate your Account",
     "timestamp": "2021-05-12T07:38:00",
-    "preview": "Security Notice!",
+    "preview": "Security Notice! Dear John Doe, our security system has detected some ...",
     "body": [
       {
         "type":"image",
@@ -214,20 +189,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": true,
-    "emailCategory": "urgent",
-    "phishingCategory": "account validation",
-    "manipulationTechnique": ["stress","helpfulness"],
-    "difficulty": "medium"
+    "read": false
   },
   {
     "id": 7,
+    "set": "B",
     "sender": "management@globalconnect.com",
     "subject": "Win a new IPhone",
     "timestamp": "2020-08-04T06:58:00",
-    "preview": "Global Connect raffles 10 new iphones as corporate phones.",
+    "preview": "Dear Globalconnect employees, because the turnover was very high last ...",
     "body": [
       {
         "type":"image",
@@ -259,20 +229,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": false,
-    "emailCategory": "neutral",
-    "phishingCategory": "lottery",
-    "manipulationTechnique": ["reward"],
-    "difficulty": "hard"
+    "read": false
   },
   {
     "id": 8,
+    "set": "A",
     "sender": "government@germany.eu",
     "subject": "New Corona regulations",
     "timestamp": "2021-07-29T12:01:00",
-    "preview": "New regulations in the sense of the infection protection.",
+    "preview": "The government has decided, due to the again rising Corona numbers ...",
     "body": [
       {
         "type": "paragraph",
@@ -286,20 +251,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": false,
-    "emailCategory": "urgent",
-    "phishingCategory": "new regulation",
-    "manipulationTechnique": ["stress","authority"],
-    "difficulty": "hard"
+    "read": false
   },
   {
     "id": 9,
+    "set": "B",
     "sender": "license@microsuft.com",
     "subject": "Extend your Microsoft license",
     "timestamp": "2021-06-29T08:35:00",
-    "preview": "We would like remind you to renew your anual Microsoft license.",
+    "preview": "Microsoft Dear Customer, We would like remind you to renew your anual ...",
     "body": [
       {
         "type": "image",
@@ -331,20 +291,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": false,
-    "emailCategory": "urgent",
-    "phishingCategory": "account validation",
-    "manipulationTechnique": ["authority","stress"],
-    "difficulty": "easy"
+    "read": false
   },
   {
     "id": 10,
+    "set": "B",
     "sender": "no-reply@dropbox.com",
     "subject": "Max Miller has shared Meeting Guide with you",
     "timestamp": "2021-05-11T06:13:00",
-    "preview": "Max Miller has invited you to edit the document Meeting guide.",
+    "preview": "Hello John Doe, Max Miller (maxmiller@globalconnect.com) has invited ...",
     "body": [
       {
         "type": "paragraph",
@@ -374,10 +329,11 @@
   },
   {
     "id": 11,
+    "set": "A",
     "sender": "maxmiller@globalconnect.com",
     "subject": "Lunchbreak?",
     "timestamp": "2021-08-05T05:18:00",
-    "preview": "You want to have lunch today?",
+    "preview": "Hey, You want to have lunch today? I heard about a new restaurant ...",
     "body": [
       {
         "type": "paragraph",
@@ -407,10 +363,11 @@
   },
   {
     "id": 12,
+    "set": "A",
     "sender": "lisachase@globalconnect.com",
     "subject": "Distribution FFP2 Masks",
     "timestamp": "2021-07-30T09:13:00",
-    "preview": "Two FFP2 masks will be distributed to all employees next Monday.",
+    "preview": "Dear colleagues, since we at Global-Connect have a FFP2 mask ...",
     "body": [
       {
         "type": "paragraph",
@@ -439,10 +396,11 @@
   },
   {
     "id": 13,
+    "set": "A",
     "sender": "margJohnson@globalconnect.com",
     "subject": "Explanation Transponder battery replacement",
     "timestamp": "2021-06-06T11:25:00",
-    "preview": "There are still questions regarding the battery change of the transponders.",
+    "preview": "Dear colleagues, Since there are still some questions regarding the ...",
     "body": [
       {
         "type": "paragraph",
@@ -472,10 +430,11 @@
   },
   {
     "id": 14,
+    "set": "A",
     "sender": "companymanagement@globalconnect.com",
     "subject": "Company party",
     "timestamp": "2021-05-18T12:43:00",
-    "preview": "We are very pleased to invite you to our company party.",
+    "preview": "Hi Global-Connect Team, one year is over again and we are very ...",
     "body": [
       {
         "type": "paragraph",
@@ -505,10 +464,11 @@
   },
   {
     "id": 15,
+    "set": "B",
     "sender": "maxmiller@globalconnect.com",
     "subject": "Information mail - Craftsman",
     "timestamp": "2021-05-01T11:23:00",
-    "preview": "I have ordered a craftsman for next Monday.",
+    "preview": "Hey John Doe, I have ordered a craftsman for next Monday between 10am ...",
     "body": [
       {
         "type": "paragraph",
@@ -533,10 +493,11 @@
   },
   {
     "id": 16,
+    "set": "B",
     "sender": "maxmiller@globalconnect.com",
     "subject": "Numbers Document",
     "timestamp": "2021-07-07T08:54:00",
-    "preview": "maxmiller@globalconnect.com shared the following Document with you.",
+    "preview": "maxmiller@globalconnect.com shared the following Document with you ...",
     "body": [
       {
         "type": "paragraph",
@@ -562,10 +523,11 @@
   },
   {
     "id": 17,
+    "set": "B",
     "sender": "service@globalconnect.com",
     "subject": "New break room regulations",
     "timestamp": "2021-08-07T15:21:00",
-    "preview": "We have changed our rules for the break room.",
+    "preview": "Dear colleagues, due to the current situation, we have changed our ...",
     "body": [
       {
         "type": "paragraph",
@@ -591,20 +553,15 @@
     ],
     "folder": "inbox",
     "isPhishing": true,
-    "read": false,
-
-    "senderSpoofed": false,
-    "emailCategory": "neutral",
-    "phishingCategory": "new regulation",
-    "manipulationTechnique": ["authority","stress"],
-    "difficulty": "hard"
+    "read": false
   },
   {
     "id": 18,
+    "set": "B",
     "sender": "service@globalconnect.com",
     "subject": "New break room regulations",
     "timestamp": "2021-08-07T17:17:00",
-    "preview": "The disinfection dispenser on the second floor is broken.",
+    "preview": "Dear colleagues, we have received feedback that the disinfection ...",
     "body": [
       {
         "type": "paragraph",
@@ -625,10 +582,11 @@
   },
   {
     "id": 19,
+    "set": "A",
     "sender": "dep.management@globalconnect.com",
     "subject": "Deadline Project",
     "timestamp": "2021-08-06T16:58:00",
-    "preview": "Please send me all necessary documents by mail until then.",
+    "preview": "Dear John Doe, after consultation with our customer, I set the ...",
     "body": [
       {
         "type": "paragraph",
@@ -649,10 +607,11 @@
   },
   {
     "id": 20,
+    "set": "A",
     "sender": "lizstone@globalconnect.com",
     "subject": "Urgent! Missing Documents",
     "timestamp": "2021-08-04T12:27:00",
-    "preview": "I am still missing the documents from our last team meeting.",
+    "preview": "Dear John Doe, Unfortunately, I am still missing the documents from ...",
     "body": [
       {
         "type": "paragraph",
@@ -673,10 +632,11 @@
   },
   {
     "id": 21,
+    "set": "A",
     "sender": "dep.management@globalconnect.com",
     "subject": "Appointment Paulsen",
     "timestamp": "2021-08-04T15:31:00",
-    "preview": "Could you please make an appointment with our customer Mr. Paulsen?",
+    "preview": "Dear John Doe, could you please make an appointment with our customer ...",
     "body": [
       {
         "type": "paragraph",
@@ -697,10 +657,11 @@
   },
   {
     "id": 22,
+    "set": "A",
     "sender": "companymanagement@globalconnect.com",
     "subject": "Submission of sick leave",
     "timestamp": "2021-07-19T20:39:00",
-    "preview": "We still need your sick leave for our booking office.",
+    "preview": "Dear John Doe, We still need your sick leave for our booking office ...",
     "body": [
       {
         "type": "paragraph",
@@ -725,10 +686,11 @@
   },
   {
     "id": 23,
+    "set": "B",
     "sender": "companymanagement@globalconnect.com",
     "subject": "Submit vacation request",
     "timestamp": "2021-05-19T09:10:00",
-    "preview": "You are welcome to take a vacation at the requested time.",
+    "preview": "Dear John Doe, We have revised our planning and decided that you are ...",
     "body": [
       {
         "type": "paragraph",
@@ -753,10 +715,11 @@
   },
   {
     "id": 24,
+    "set": "B",
     "sender": "Max Miller",
     "subject": "Feedback request",
     "timestamp": "2021-06-11T13:10:00",
-    "preview": "Could you please look over it and help me?",
+    "preview": "Dear John Doe, thanks for your help with my project! I have tried to ...",
     "body": [
       {
         "type": "paragraph",
@@ -781,10 +744,11 @@
   },
   {
     "id": 25,
+    "set": "B",
     "sender": "Timo Michaelson",
     "subject": "Task",
     "timestamp": "2021-08-07T11:18:00",
-    "preview": "I am totally stressed and urgently need your support with a task.",
+    "preview": "Dear John Doe, Unfortunately, I am totally stressed and urgently need ...",
     "body": [
       {
         "type": "paragraph",
@@ -805,10 +769,11 @@
   },
   {
     "id": 26,
+    "set": "B",
     "sender": "companymanagement@globalconnect.com",
     "subject": "Missing information",
     "timestamp": "2021-07-20T11:15:00",
-    "preview": "We are currently drafting the new contract as discussed.",
+    "preview": "Dear John Doe, we are currently drafting the new contract as ...",
     "body": [
       {
         "type": "paragraph",
@@ -833,10 +798,11 @@
   },
   {
     "id": 27,
+    "set": "B",
     "sender": "Timo Michaelson",
     "subject": "Schedule zoom meeting for employee review",
     "timestamp": "2021-08-07T17:27:00",
-    "preview": "Our monthly employee review meeting is coming up again.",
+    "preview": "Dear John Doe, our monthly employee review meeting is coming up ...",
     "body": [
       {
         "type": "paragraph",
@@ -865,10 +831,11 @@
   },
   {
     "id": 28,
+    "set": "A",
     "sender": "service@e.amaysim.com.au",
     "subject": "Hey there, 50% off unlimited mobile data",
     "timestamp": "2021-08-03T11:17:00",
-    "preview": "exclusive deal for you: 50% off your first renewal",
+    "preview": "exclusive deal for you: 50% off your first renewal ...",
     "body": [
       {
       "type": "iframe",
@@ -883,10 +850,11 @@
   },
   {
     "id": 29,
+    "set": "B",
     "sender": "noreply@mail.immobilienscout24.de",
     "subject": "Mieter vs. Vermieter – Wo wird am meisten gestritten?",
     "timestamp": "2021-08-01T08:21:00",
-    "preview": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein",
+    "preview": "Ausgeschlossen? So kommen Sie ohne Schlüsseldienst rein ...",
     "body": [
       {
       "type": "iframe",
@@ -901,10 +869,11 @@
   },
   {
     "id": 30,
+    "set": "A",
     "sender": "Angebote@myunidays.com",
     "subject": "Fitness-Motivation gefällig?",
     "timestamp": "2021-08-06T09:48:00",
-    "preview": "Wir haben die perfekten Rabatte für Gesundheit und Fitness.",
+    "preview": "Wir haben die perfekten Rabatte für Gesundheit und Fitness ...",
     "body": [
      {
         "type": "iframe",
@@ -919,10 +888,11 @@
   },
   {
     "id": 31,
+    "set": "B",
     "sender": "newsletter@newsletter.nivea.de",
     "subject": "Deo jetzt exklusiv testen",
     "timestamp": "2021-08-01T14:35:00",
-    "preview": "1.200 Botschafter*innen gesucht.",
+    "preview": "1.200 Botschafter*innen gesucht ...",
     "body": [
        {
       "type": "iframe",
@@ -937,10 +907,11 @@
   },
   {
     "id": 32,
+    "set": "A",
     "sender": "no-reply@message.tipico.de",
     "subject": "Hochspannende Spiele und Olympia-Finish",
     "timestamp": "2021-07-29T19:17:00",
-    "preview": "Spitzenfußball in Europa",
+    "preview": "Spitzenfußball in Europa ...",
     "body": [
     {
       "type": "iframe",
@@ -955,10 +926,11 @@
   },
   {
     "id": 33,
+    "set": "B",
     "sender": "norton@secure.norton.com",
     "subject": "NortonLifeLock",
     "timestamp": "2021-07-27T12:52:00",
-    "preview": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen.",
+    "preview": "Schützen Sie das Gerät, über das Sie Verbindungen herstellen ...",
     "body": [
       {
       "type": "iframe",
@@ -973,10 +945,11 @@
   },
   {
     "id": 34,
+    "set": "A",
     "sender": "kate.cornwell@imotions.com",
     "subject": "Every week is pride week",
     "timestamp": "2021-07-01T13:11:00",
-    "preview": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da.",
+    "preview": "Aus Liebe zur Liebe: die neue Pride Kollektion ist da ...",
     "body": [
     {
       "type": "iframe",
@@ -991,10 +964,11 @@
   },
   {
     "id": 35,
+    "set": "B",
     "sender": "payback@mailing.rewe.de",
     "subject": "Geld sparen mit Payback-Punkten",
     "timestamp": "2021-07-27T13:11:00",
-    "preview": "Dein Umsatz. Dein REWE Bonus Coupon.",
+    "preview": "Dein Umsatz. Dein REWE Bonus Coupon ...",
     "body": [
      {
       "type": "iframe",
@@ -1009,10 +983,11 @@
   },
   {
     "id": 36,
+    "set": "A",
     "sender": "message@my.zalando.de",
     "subject": "Finaler Sale",
     "timestamp": "2021-08-04T13:11:00",
-    "preview": "Noch 3 Tage: Bis zu 70%",
+    "preview": "Noch 3 Tage: Bis zu 70% ...",
     "body": [
      {
       "type": "iframe",

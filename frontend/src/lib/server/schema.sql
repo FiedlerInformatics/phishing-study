@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS SURVEY_SESSION(
   startTime       TEXT,
   endTime         TEXT,
   UNIQUE(participantID, surveyID)
-);
+);  
 
 CREATE TABLE IF NOT EXISTS QUESTION (
   questionID        INTEGER PRIMARY KEY,
@@ -303,5 +303,4 @@ INSERT OR IGNORE INTO PHISHING_DETAIL (elementID, threat, specificAction) VALUES
   -- URGENT
   (2, 'None', 'participate in company evaluation'),
   (3, 'Yes',  'participate in the questionaire'),
-  (4, 'None', 'preview the document');
-
+    (4, 'None', 'preview the document');

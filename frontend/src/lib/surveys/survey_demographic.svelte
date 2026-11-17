@@ -190,7 +190,7 @@
     <h1>Demographic Questionnaire</h1>
   </div>
 
-//------------------------- GENDER --------------------------------------------------------------------
+<!------------------------- GENDER -------------------------------------------------------------------->
   
   <div class = "quest">
 
@@ -214,7 +214,7 @@
       </form>
     </div>
 
-//------------------------- AGE --------------------------------------------------------------------
+<!------------------------- AGE -------------------------------------------------------------------->
 
     <div class="quest_box" class:invalid={invalidFields.includes('age_id')}>
       <h2 id="age_id" class:invalid={invalidFields.includes('age_id')}>Age</h2>
@@ -223,7 +223,7 @@
       </form>
     </div>
 
-//------------------------- EDUCATION --------------------------------------------------------------------
+<!------------------------- EDUCATION -------------------------------------------------------------------->
 
     <div class="quest_box" class:invalid={invalidFields.includes('education_level_id')}>
 
@@ -248,7 +248,7 @@
       </form>
     </div>
     
-//--------------------------- OCCUPATION -----------------------------------------
+<!--------------------------- OCCUPATION --------------------------------------------------------------->
 
  <div class="quest_box" class:invalid={invalidFields.includes('occupation_id')}>
 
@@ -259,21 +259,21 @@
         <select bind:value={occupation}>
         <optgroup>
           <option value="" disabled>Select an occupation level</option>
-          <option value="Student" disabled>Student</option>
-          <option value="Full time employment" disabled>Full time employment</option>
-          <option value="Part time emplyoment" disabled>Part time employment</option>
-          <option value="Self employed" disabled>Self employed</option>
-          <option value="Vocational training / apprenticeship" disabled>Vocational training / apprenticeship</option>
-          <option value="Unemployed" disabled>Unemployed</option>
-          <option value="Retired" disabled>Retired</option>
-          <option value="Other" disabled>Other</option>
-          <option value="Prefer not to say" disabled>Prefer not to say</option>
+          <option value="Student">Student</option>
+          <option value="Full time employment">Full time employment</option>
+          <option value="Part time emplyoment">Part time employment</option>
+          <option value="Self employed">Self employed</option>
+          <option value="Vocational training / apprenticeship" >Vocational training / apprenticeship</option>
+          <option value="Unemployed">Unemployed</option>
+          <option value="Retired">Retired</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
           </optgroup>
         </select>
       </form>
     </div>
 
-//--------------------------- FIELD OF STUDY -----------------------------------------
+<!--------------------------- FIELD OF STUDY ----------------------------------------->
 
  <div class="quest_box" class:invalid={invalidFields.includes('field_of_study_id')}>
  
@@ -299,7 +299,7 @@
       </form>
     </div>
 
-//--------------------------- INDUSTRY -----------------------------------------
+<!--------------------------- INDUSTRY ----------------------------------------->
 
     <div class="quest_box" class:invalid={invalidFields.includes('industry_id')}>
 
@@ -326,7 +326,7 @@
       </form>
     </div>
 
-//--------------------------- NATIVE LANGUAGE -----------------------------------------
+<!--------------------------- NATIVE LANGUAGE ----------------------------------------->
 
     <div class="quest_box" class:invalid={invalidFields.includes('native_language_id')}>
 

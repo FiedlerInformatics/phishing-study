@@ -113,6 +113,7 @@ declare module '$env/static/private' {
 	export const MAIL: string;
 	export const SYSTEMD_SLEEP_FREEZE_USER_SESSIONS: string;
 	export const npm_node_execpath: string;
+	export const OLDPWD: string;
 	export const NODE_ENV: string;
 }
 
@@ -275,6 +276,7 @@ declare module '$env/dynamic/private' {
 		MAIL: string;
 		SYSTEMD_SLEEP_FREEZE_USER_SESSIONS: string;
 		npm_node_execpath: string;
+		OLDPWD: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
