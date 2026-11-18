@@ -3,7 +3,8 @@ import { t as page } from "../../../../chunks/state.js";
 //#region src/lib/introductions/NASA-TLX_intro.svelte
 function NASA_TLX_intro($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
-		derived(() => page.url.searchParams.get("condition"));
+		const condition = derived(() => page.url.searchParams.get("condition"));
+		console.log("condition: ", condition());
 		$$renderer.push(`<div class="page svelte-11q03hk"><header class="top svelte-11q03hk"><h1 class="svelte-11q03hk">NASA-TLX Introduction</h1></header> <main class="content svelte-11q03hk"><section class="content_box svelte-11q03hk"><p class="svelte-11q03hk">Thank you for participating in the first practical task of the study.
             In the next step, you will be asked to complete a short questionnaire about your experience with the task.</p> <h3 class="svelte-11q03hk">Task Load Index Assessment</h3> <p class="svelte-11q03hk">The Official NASA Task Load Index (TLX) is a subjective workload assessment tool developed by Human Systems Integration Division researchers.
             This tool allows users to perform subjective workload assessments on operator(s) working with various human-machine interface systems.

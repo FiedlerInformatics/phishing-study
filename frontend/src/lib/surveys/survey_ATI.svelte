@@ -1,8 +1,9 @@
 <script>
     import { goto } from '$app/navigation';
-    import { submitResponses } from '$lib/api';
+    import { submitSurvey } from '$lib/api';
 
-    const startedAt = Date.now();
+    const SURVEY_ID = 4;                          // SURVEY: 'ATI-Scale'
+    const startTime = new Date().toISOString();   // SURVEY_SESSION.startTime
     let saveError = '';
     let saving = false;
 
@@ -52,11 +53,12 @@
         saving = true;
         saveError = '';
         try {
-            await submitResponses('ati', 'main', {
-                ati_01: ati_01_value, ati_02: ati_02_value, ati_03: ati_03_value,
-                ati_04: ati_04_value, ati_05: ati_05_value, ati_06: ati_06_value,
-                ati_07: ati_07_value, ati_08: ati_08_value, ati_09: ati_09_value
-            }, startedAt);
+            // Schlüssel = questionID aus QUESTION (ati_01 … ati_09 = 20 … 28)
+            await submitSurvey(SURVEY_ID, startTime, {
+                20: ati_01_value, 21: ati_02_value, 22: ati_03_value,
+                23: ati_04_value, 24: ati_05_value, 25: ati_06_value,
+                26: ati_07_value, 27: ati_08_value, 28: ati_09_value
+            });
             goto('/introductions_routes/end-route');
         } catch (e) {
             console.error(e);

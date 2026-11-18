@@ -1,16 +1,17 @@
-import { i as onDestroy } from "../../../../chunks/internal.js";
+import "../../../../chunks/index-server.js";
 import { a as head, b as escape_html, i as ensure_array_like, n as bind_props, r as derived, t as attr_class, y as attr } from "../../../../chunks/server.js";
+import "../../../../chunks/api.js";
 import "../../../../chunks/client.js";
 import "../../../../chunks/navigation.js";
-import { a as archive_icon_default, c as mail_icon_default, d as email_warning_icon_default, i as notes_icon_default, l as mail_alert_icon_default, n as star_icon_default, o as trash_icon_default, r as tag_icon_default, s as send_email_icon_default, t as emails_default, u as inbox_icon_default } from "../../../../chunks/Button_start.js";
+import { a as archive_icon_default, c as mail_icon_default, f as FOLDER_ID, i as notes_icon_default, l as inbox_icon_default, n as important_mail_icon_default, o as trash_icon_default, r as tag_icon_default, s as send_email_icon_default, t as emails_default, u as email_warning_icon_default } from "../../../../chunks/Button_start.js";
 //#region src/lib/tasks/stressless_task.svelte
 function Stressless_task($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
-		let emails = emails_default.map((e) => ({ ...e }));
+		let emails = emails_default.filter((e) => e.set === "A").map((e) => ({ ...e }));
 		let selectedEmail = null;
 		let activeFolder = "inbox";
-		const DURATION_MS = .5 * 60 * 1e3;
-		let { sessionId, remaining = DURATION_MS } = $$props;
+		const DURATION_MS = 500 * 60 * 1e3;
+		let { remaining = DURATION_MS } = $$props;
 		let running = false;
 		derived(() => () => {
 			const m = Math.floor(remaining / 6e4);
@@ -35,40 +36,37 @@ function Stressless_task($$renderer, $$props) {
 			});
 		}
 		let draggedEmail = null;
-		let ws;
-		onDestroy(() => ws?.close());
 		head("1otuk2h", $$renderer, ($$renderer) => {
 			$$renderer.push(`<link rel="icon" href="/favicon.svg"/>`);
 		});
-		$$renderer.push(`<div class="email-app"><div class="container"><section class="top"><div class="top_title"><h1>Outmail</h1> <img class="top_icon"${attr("src", mail_icon_default)} alt="mail logo"/></div></section> <section class="tool_sidebar"><div id="inbox"${attr_class("sidebar_item", void 0, {
+		$$renderer.push(`<div class="email-app"><div class="container"><section class="top"><div class="top_title"><h1>Outmail</h1> <img class="top_icon"${attr("src", mail_icon_default)} alt="mail logo"/></div> `);
+		$$renderer.push("<!--[-1-->");
+		$$renderer.push(`<!--]--></section> <section class="tool_sidebar"><div id="inbox"${attr_class("sidebar_item", void 0, {
 			"active": activeFolder === "inbox",
 			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", inbox_icon_default)} alt="" aria-hidden="true"/> <h4>Inbox</h4></div> <div id="junk"${attr_class("sidebar_item", void 0, {
-			"active": activeFolder === "junk",
+		})}${attr("data-ui-element", FOLDER_ID.inbox)} role="button" tabindex="0"><img class="icon"${attr("src", inbox_icon_default)} alt="" aria-hidden="true"/> <h4>Inbox</h4></div> <div id="important"${attr_class("sidebar_item", void 0, {
+			"active": activeFolder === "important",
 			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", email_warning_icon_default)} alt="" aria-hidden="true"/> <h4>Junk Email</h4></div> <div id="starred"${attr_class("sidebar_item", void 0, {
-			"active": activeFolder === "starred",
+		})}${attr("data-ui-element", FOLDER_ID.important)} role="button" tabindex="0"><img class="icon"${attr("src", important_mail_icon_default)} alt="" aria-hidden="true"/> <h4>Important</h4></div> <div id="spam"${attr_class("sidebar_item", void 0, {
+			"active": activeFolder === "spam",
 			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", star_icon_default)} alt="" aria-hidden="true"/> <h4>Starred</h4></div> <div id="drafts"${attr_class("sidebar_item", void 0, {
-			"active": activeFolder === "drafts",
+		})}${attr("data-ui-element", FOLDER_ID.spam)} role="button" tabindex="0"><img class="icon"${attr("src", email_warning_icon_default)} alt="" aria-hidden="true"/> <h4>Spam</h4></div> <div id="neutral"${attr_class("sidebar_item", void 0, {
+			"active": activeFolder === "neutral",
 			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", mail_alert_icon_default)} alt="" aria-hidden="true"/> <h4>Drafts</h4></div> <div id="sent_items"${attr_class("sidebar_item", void 0, {
-			"active": activeFolder === "sent",
+		})}${attr("data-ui-element", FOLDER_ID.neutral)} role="button" tabindex="0"><img class="icon"${attr("src", mail_icon_default)} alt="" aria-hidden="true"/> <h4>Neutral</h4></div> <div id="bin"${attr_class("sidebar_item", void 0, {
+			"active": activeFolder === "bin",
 			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", send_email_icon_default)} alt="" aria-hidden="true"/> <h4>Sent items</h4></div> <div id="deleted"${attr_class("sidebar_item", void 0, {
-			"active": activeFolder === "deleted",
-			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", trash_icon_default)} alt="" aria-hidden="true"/> <h4>Deleted</h4></div> <div id="archive"${attr_class("sidebar_item", void 0, {
+		})}${attr("data-ui-element", FOLDER_ID.bin)} role="button" tabindex="0"><img class="icon"${attr("src", trash_icon_default)} alt="" aria-hidden="true"/> <h4>Bin</h4></div> <div id="archive"${attr_class("sidebar_item", void 0, {
 			"active": activeFolder === "archive",
 			"drop_target": draggedEmail != null
-		})} role="button" tabindex="0"><img class="icon"${attr("src", archive_icon_default)} alt="" aria-hidden="true"/> <h4>Archive</h4></div> <div id="notes"${attr_class("sidebar_item", void 0, { "active": activeFolder === "notes" })} role="button" tabindex="0"><img class="icon"${attr("src", notes_icon_default)} alt="" aria-hidden="true"/> <h4>Notes</h4></div> <div id="tags"${attr_class("sidebar_item", void 0, { "active": activeFolder === "tags" })} role="button" tabindex="0"><img class="icon"${attr("src", tag_icon_default)} alt="" aria-hidden="true"/> <h4>Tags</h4></div></section> <section class="email_window"><ul class="email_list" role="list"><!--[-->`);
+		})}${attr("data-ui-element", FOLDER_ID.archive)} role="button" tabindex="0"><img class="icon"${attr("src", archive_icon_default)} alt="" aria-hidden="true"/> <h4>Archive</h4></div> <div id="sent"${attr_class("sidebar_item", void 0, { "active": activeFolder === "sent" })}${attr("data-ui-element", FOLDER_ID.sent)} role="button" tabindex="0"><img class="icon"${attr("src", send_email_icon_default)} alt="" aria-hidden="true"/> <h4>Sent</h4></div> <div id="notes"${attr_class("sidebar_item", void 0, { "active": activeFolder === "notes" })}${attr("data-ui-element", FOLDER_ID.notes)} role="button" tabindex="0"><img class="icon"${attr("src", notes_icon_default)} alt="" aria-hidden="true"/> <h4>Notes</h4></div> <div id="tags"${attr_class("sidebar_item", void 0, { "active": activeFolder === "tags" })}${attr("data-ui-element", FOLDER_ID.tags)} role="button" tabindex="0"><img class="icon"${attr("src", tag_icon_default)} alt="" aria-hidden="true"/> <h4>Tags</h4></div></section> <section class="email_window"><ul class="email_list" role="list"><!--[-->`);
 		const each_array = ensure_array_like(visibleEmails());
 		for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
 			let email = each_array[$$index];
 			$$renderer.push(`<li${attr_class("email_row", void 0, {
 				"selected": selectedEmail?.id === email.id,
 				"unread": !email.read
-			})} draggable="true" role="button" tabindex="0"><div class="email_row_top"><span class="email_sender">${escape_html(email.sender)}</span> <span class="email_time">${escape_html(formatTime(email.timestamp))}</span></div> <div class="email_row_bottom"><span class="email_subject">${escape_html(email.subject)}</span> <span class="email_preview">${escape_html(email.preview)}</span></div></li>`);
+			})}${attr("data-ui-element", email.id)} draggable="true" role="button" tabindex="0"><div class="email_row_top"><span class="email_sender">${escape_html(email.sender)}</span> <span class="email_time">${escape_html(formatTime(email.timestamp))}</span></div> <div class="email_row_bottom"><span class="email_subject">${escape_html(email.subject)}</span> <span class="email_preview">${escape_html(email.preview)}</span></div></li>`);
 		}
 		$$renderer.push(`<!--]--> `);
 		if (visibleEmails().length === 0) {

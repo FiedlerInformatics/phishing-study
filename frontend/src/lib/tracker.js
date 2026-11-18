@@ -1,64 +1,218 @@
-import { getSessionId } from './api';
+// Misst die Interaktion während eines Tasks und speichert sie in
+// MOUSE_MOVEMENT, HOVER_EVENT, POINT_EVENT, SCROLL_EVENT und DRAGDROP_EVENT.
+// Feldnamen entsprechen den Spalten in schema.sql.
+//
+// Bildschirmunabhängig:
+//   - UI-Elemente werden über ihre elementID erkannt (Attribut data-ui-element), nicht über ihre Position.
+//   - x / y              = Mausposition als Anteil der Fensterbreite / -höhe (0–1).
+//   - scrollStart/End X/Y = Scrollposition als Anteil des scrollbaren Bereichs (0 = Anfang, 1 = Ende).
+import { postBatch } from './api';
 
-let phase = null;
-let buf = { moves: [], events: [], hr: [] };
-let retry = [];
+const FLUSH_INTERVAL_MS = 2000;
+const MOVE_INTERVAL_MS = 50;    // höchstens 20 Mauspositionen pro Sekunde
+const SCROLL_END_MS = 150;      // so lange ohne Scrollen = Scrollvorgang beendet
 
-const onMove = (e) => buf.moves.push([Date.now(), Math.round(e.clientX), Math.round(e.clientY)]);
+const now = () => new Date().toISOString();
+const relX = (e) => e.clientX / window.innerWidth;
+const relY = (e) => e.clientY / window.innerHeight;
 
-/** Im Layout: Events, HR und regelmäßiger Flush laufen die ganze Studie. */
-export function startTracker() {
-  const onHide = () => flush(true);
-  window.addEventListener('pagehide', onHide);
-  const id = setInterval(flush, 2000);
+/** elementID des innersten Elements mit data-ui-element unter der Maus, sonst null */
+function uiElementOf(target) {
+  const el = target instanceof Element ? target.closest('[data-ui-element]') : null;
+  return el ? Number(el.dataset.uiElement) : null;
+}
 
-  return () => {
-    stopMouse();
-    window.removeEventListener('pagehide', onHide);
-    clearInterval(id);
-    flush(true);
+let taskID = null;
+let buffer = emptyBuffer();
+let pending = [];
+let flushTimer;
+
+function emptyBuffer() {
+  return { moves: [], hovers: [], points: [], scrolls: [], drags: [] };
+}
+
+// ---------- MOUSE_MOVEMENT ----------
+let lastPosition = { x: null, y: null };
+let lastMoveStamp = -Infinity;
+
+function onMouseMove(e) {
+  const x = relX(e), y = relY(e);
+  if (x === lastPosition.x && y === lastPosition.y) return;   // dragover feuert auch ohne Bewegung
+  lastPosition = { x, y };
+
+  if (e.timeStamp - lastMoveStamp < MOVE_INTERVAL_MS) return;
+  lastMoveStamp = e.timeStamp;
+  buffer.moves.push({ moveTime: now(), x, y });
+}
+
+// ---------- HOVER_EVENT: Maus betritt ein UI-Element bis sie es verlässt ----------
+let hover = null;
+
+function onMouseOver(e) {
+  const elementID = uiElementOf(e.target);
+  if (elementID === (hover?.elementID ?? null)) return;   // noch im selben Element
+  endHover();
+  if (elementID !== null) {
+    hover = { eventStart: now(), eventEnd: null, elementID, x: relX(e), y: relY(e) };
+  }
+}
+
+function onMouseOut(e) {
+  if (e.relatedTarget === null) endHover();   // Maus verlässt das Fenster
+}
+
+function endHover() {
+  if (!hover) return;
+  hover.eventEnd = now();
+  buffer.hovers.push(hover);
+  hover = null;
+}
+
+// ---------- POINT_EVENT: Maustaste gedrückt bis losgelassen ----------
+const pressed = new Map();   // mouseButton -> offenes POINT_EVENT
+
+function onMouseDown(e) {
+  if (e.button > 4) return;   // mouseButton: 0 links, 1 Mitte, 2 rechts, 3 zurück, 4 vor
+  pressed.set(e.button, {
+    eventStart: now(), eventEnd: null, mouseButton: e.button,
+    x: relX(e), y: relY(e), elementID: uiElementOf(e.target)
+  });
+}
+
+function onMouseUp(e) {
+  const point = pressed.get(e.button);
+  if (!point) return;
+  pressed.delete(e.button);
+  point.eventEnd = now();
+  buffer.points.push(point);
+}
+
+// ---------- SCROLL_EVENT ----------
+const scrollPositions = new WeakMap();   // letzte bekannte Position je Container
+let scroll = null;
+let scrollTimer;
+
+function scrollPosition(el) {
+  const maxX = el.scrollWidth - el.clientWidth;
+  const maxY = el.scrollHeight - el.clientHeight;
+  return { x: maxX > 0 ? el.scrollLeft / maxX : 0, y: maxY > 0 ? el.scrollTop / maxY : 0 };
+}
+
+function onScroll(e) {
+  const el = e.target === document ? document.scrollingElement : e.target;
+  if (!(el instanceof Element)) return;
+  if (scroll && scroll.el !== el) endScroll();
+
+  if (!scroll) {
+    const start = scrollPositions.get(el) ?? { x: 0, y: 0 };
+    scroll = { el, eventStart: now(), lastScroll: null, scrollStartX: start.x, scrollStartY: start.y };
+  }
+  scroll.lastScroll = now();
+  scrollPositions.set(el, scrollPosition(el));
+
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(endScroll, SCROLL_END_MS);
+}
+
+function endScroll() {
+  clearTimeout(scrollTimer);
+  if (!scroll) return;
+  const end = scrollPosition(scroll.el);
+  buffer.scrolls.push({
+    eventStart: scroll.eventStart, eventEnd: scroll.lastScroll,
+    scrollStartX: scroll.scrollStartX, scrollStartY: scroll.scrollStartY,
+    scrollEndX: end.x, scrollEndY: end.y
+  });
+  scroll = null;
+}
+
+// ---------- DRAGDROP_EVENT: aufgerufen aus den Drag-Handlern des Tasks ----------
+let drag = null;
+
+export function trackDragStart(e, eMailID, fromFolderID) {
+  pressed.delete(0);   // nach dragstart kommt kein mouseup mehr; der Vorgang steht in DRAGDROP_EVENT
+  endHover();          // während des Ziehens wird nicht gehovert
+  drag = {
+    eventStart: now(), eventEnd: null,
+    startX: relX(e), startY: relY(e), endX: null, endY: null,
+    eMailID, fromFolderID: fromFolderID ?? null, toFolderID: null
   };
 }
 
-/** Nur in den Tasks: Mausbewegungen aufzeichnen. */
-export function startMouse() {
-  window.addEventListener('mousemove', onMove, { passive: true });
+/** Gültiger Drop auf einen Ordner */
+export function trackDrop(e, toFolderID) {
+  finishDrag(relX(e), relY(e), toFolderID ?? null);
 }
 
-export function stopMouse() {
-  window.removeEventListener('mousemove', onMove);
+/** Drag ohne gültigen Drop (toFolderID = NULL). Nach einem Drop ohne Wirkung. */
+export function trackDragEnd() {
+  finishDrag(lastPosition.x, lastPosition.y, null);
 }
 
-/** Schließt die alte Phase ab (Flush) und beginnt eine neue. */
-export function setPhase(next) {
-  flush();
-  phase = next;
-  track('phase_start');
+function finishDrag(x, y, toFolderID) {
+  if (!drag) return;
+  Object.assign(drag, { eventEnd: now(), endX: x, endY: y, toFolderID });
+  buffer.drags.push(drag);
+  drag = null;
 }
 
-export const track = (type, fields = {}) => buf.events.push({ ts: Date.now(), type, ...fields });
+// ---------- Start / Stopp / Senden ----------
+const LISTENERS = {
+  mousemove: onMouseMove,
+  dragover: onMouseMove,   // während HTML5-Drag feuert kein mousemove
+  mouseover: onMouseOver,
+  mouseout: onMouseOut,
+  mousedown: onMouseDown,
+  mouseup: onMouseUp,
+  scroll: onScroll         // capture: erreicht auch Scrolls in Unterelementen
+};
+const OPTIONS = { capture: true, passive: true };
 
-export const trackHr = (bpm) => buf.hr.push([Date.now(), bpm]);
+function closeOpenEvents() {
+  endHover();
+  endScroll();
+  pressed.clear();
+  drag = null;
+}
 
-export async function flush(beacon = false) {
-  const sessionId = getSessionId();
-  const hasData = buf.moves.length || buf.events.length || buf.hr.length;
-  const batches = retry;
-  retry = [];
-  if (hasData && sessionId && phase) batches.push({ sessionId, phase, ...buf });
-  buf = { moves: [], events: [], hr: [] };   // vor Sessionstart: verwerfen
+function onPageHide() {
+  closeOpenEvents();
+  flushEvents(true);
+}
 
-  for (const b of batches) {
-    const body = JSON.stringify(b);
-    if (beacon) { navigator.sendBeacon('/api/events', body); continue; }
+/** Beim Task-Start, nachdem der TASK angelegt wurde. */
+export function startTaskTracking(id) {
+  taskID = id;
+  for (const [type, fn] of Object.entries(LISTENERS)) window.addEventListener(type, fn, OPTIONS);
+  window.addEventListener('pagehide', onPageHide);
+  flushTimer = setInterval(flushEvents, FLUSH_INTERVAL_MS);
+}
+
+/** Beim Task-Ende: offene Events abschließen und alles speichern. */
+export async function stopTaskTracking() {
+  if (taskID === null) return;
+  for (const [type, fn] of Object.entries(LISTENERS)) window.removeEventListener(type, fn, OPTIONS);
+  window.removeEventListener('pagehide', onPageHide);
+  clearInterval(flushTimer);
+  closeOpenEvents();
+  await flushEvents();
+  taskID = null;
+}
+
+async function flushEvents(beacon = false) {
+  if (taskID !== null && Object.values(buffer).some((list) => list.length)) {
+    pending.push({ taskID, ...buffer });
+    buffer = emptyBuffer();
+  }
+
+  const batches = pending;
+  pending = [];
+  for (const batch of batches) {
     try {
-      const res = await fetch('/api/events', {
-        method: 'POST', headers: { 'content-type': 'application/json' }, body, keepalive: true
-      });
-      if (!res.ok) throw new Error(String(res.status));
+      await postBatch('/api/events', batch, beacon);
     } catch (err) {
-      console.error('Events nicht gespeichert, neuer Versuch', err);
-      retry.push(b);
+      console.error('Task-Daten nicht gespeichert', err);
+      if (err.retry) pending.push(batch);
     }
   }
 }

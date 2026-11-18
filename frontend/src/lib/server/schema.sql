@@ -163,6 +163,7 @@ CREATE TABLE IF NOT EXISTS POINT_EVENT(
   taskID        INTEGER NOT NULL REFERENCES TASK(taskID) ON DELETE CASCADE,
   eventStart    TEXT NOT NULL,
   eventEnd      TEXT NOT NULL,
+  mouseButton   INTEGER CHECK (mouseButton BETWEEN 0 AND 4),
 
   x             REAL,
   y             REAL,
@@ -230,6 +231,35 @@ INSERT OR IGNORE INTO UI_ELEMENT (elementID, elementType, elementName) VALUES
   (25, 'email', 'Mail 25'), (26, 'email', 'Mail 26'), (27, 'email', 'Mail 27'), (28, 'email', 'Mail 28'),
   (29, 'email', 'Mail 29'), (30, 'email', 'Mail 30'), (31, 'email', 'Mail 31'), (32, 'email', 'Mail 32'),
   (33, 'email', 'Mail 33'), (34, 'email', 'Mail 34'), (35, 'email', 'Mail 35'), (36, 'email', 'Mail 36');
+
+-- Weitere UI-Elemente der Tasks. Im Markup gekennzeichnet mit data-ui-element={elementID},
+-- im Frontend zentral in src/lib/uiElements.js – beide Stellen müssen übereinstimmen.
+--   101–109  Ordner
+--   201      Buttons
+--   300 + n  Link im Text von Mail n (nur Mails mit Link in emails.json)
+INSERT OR IGNORE INTO UI_ELEMENT (elementID, elementType, elementName) VALUES
+  (101, 'folder', 'Inbox'),
+  (102, 'folder', 'Important'),
+  (103, 'folder', 'Spam'),
+  (104, 'folder', 'Neutral'),
+  (105, 'folder', 'Bin'),
+  (106, 'folder', 'Sent'),
+  (107, 'folder', 'Archive'),
+  (108, 'folder', 'Notes'),
+  (109, 'folder', 'Tags'),
+  (201, 'button', 'Timer'),
+  (301, 'link', 'Link Mail 1'),  (302, 'link', 'Link Mail 2'),  (303, 'link', 'Link Mail 3'),
+  (304, 'link', 'Link Mail 4'),  (305, 'link', 'Link Mail 5'),  (306, 'link', 'Link Mail 6'),
+  (307, 'link', 'Link Mail 7'),  (308, 'link', 'Link Mail 8'),  (309, 'link', 'Link Mail 9'),
+  (310, 'link', 'Link Mail 10'), (311, 'link', 'Link Mail 11'), (313, 'link', 'Link Mail 13'),
+  (314, 'link', 'Link Mail 14'), (316, 'link', 'Link Mail 16'), (317, 'link', 'Link Mail 17');
+
+INSERT OR IGNORE INTO FOLDER (elementID, folderName) VALUES
+  (101, 'inbox'), (102, 'important'), (103, 'spam'), (104, 'neutral'), (105, 'bin'),
+  (106, 'sent'),  (107, 'archive'),   (108, 'notes'), (109, 'tags');
+
+INSERT OR IGNORE INTO BUTTON (elementID, buttonName) VALUES
+  (201, 'timer');
 
 -- topic      = "Main Topic" aus dem Codebook (nur für Phishing-Mails klassifiziert, sonst NULL)
 -- salutation = 'Name' | 'Generic' | 'None'; Phishing-Mails laut Codebook, übrige Mails aus der
@@ -303,4 +333,4 @@ INSERT OR IGNORE INTO PHISHING_DETAIL (elementID, threat, specificAction) VALUES
   -- URGENT
   (2, 'None', 'participate in company evaluation'),
   (3, 'Yes',  'participate in the questionaire'),
-    (4, 'None', 'preview the document');
+  (4, 'None', 'preview the document');

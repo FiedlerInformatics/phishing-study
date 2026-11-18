@@ -6,9 +6,7 @@
   import './app.css';
 
   import { onMount } from 'svelte';
-  /**Startet JavaScript: window.addEventListener('mousemove', onMove, { passive: true });*/
-  import { track, flush, startMouse, stopMouse } from '$lib/tracker'; 
-  import { hr } from '$lib/hrState.svelte.js';
+  import { connectHeartRate } from '$lib/heartRate';
   import {goto} from '$app/navigation';
 
   import email_warning from './assets/email-warning-icon.svg'
@@ -28,29 +26,27 @@
   import Button_start from '$lib/components/Button_start.svelte';
   import {timer} from '$lib/timer.svelte'
 
-  //let emails = $state(emailsRaw.map(e => ({ ...e })))
-  // Auswahl des Set 'B' aus email.json
-  let emails = $state(emailsRaw.filter(e => e.set === 'B').map(e => ({ ...e })))
+  let emails = $state(emailsRaw.map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
 
   const CRITICAL_HEART_RATE = 80;
 
-  // HR kommt aus dem Layout (einzige Verbindung zum Gurt)
-  const heartRate = $derived(hr.bpm);
+  let heartRate: number | null = $state(null);
 
   const bpmWarningVisible = $derived(
     heartRate !== null && heartRate >= CRITICAL_HEART_RATE
   );
 
-
-  /* Lädt die Seite */
   onMount(() => {
-    startMouse();
     start();
 
+    const disconnectHeartRate = connectHeartRate((value) => {
+      heartRate = value;
+    });
+
     return () => {
-      stopMouse();
+      disconnectHeartRate();
 
       if (intervalId !== undefined) {
         clearInterval(intervalId);
@@ -59,17 +55,19 @@
   });
 
   //Timer
-  const DURATION_MS = 3 * 60 * 1000;
+  const DURATION_MS = 1 * 60 * 1000;
 
-  let { remaining = $bindable(DURATION_MS) } = $props();
+  let { sessionId } = $props();
+  let remaining = $state(DURATION_MS);
 
   let running = $state(false);
   let intervalId: ReturnType<typeof setInterval> | undefined;
+  let deadline = 0;
 
   const formatted = $derived(() => {
     const m  = Math.floor(remaining / 60000);
     const s  = Math.floor((remaining % 60000) / 1000);
-    const ms = remaining % 1000;
+    const ms = Math.floor(remaining % 1000);
     return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}:${String(ms).padStart(3,'0')}`;
   });
 
@@ -79,19 +77,19 @@
 function start() {
     if (running) return;
     running = true;
-    track('task_start', { data: { durationMs: DURATION_MS } });
 
-    intervalId = setInterval(async () => {
-      remaining -= 10;
-      
-      if (remaining <= 0) { /**Wenn die Zeit abgelaufen ist, werden die Daten per flush() versendet*/
+    // Feste Deadline statt Tick-Zählung: setInterval wird vom Browser gedrosselt
+    // (Hintergrund-Tab, ausgelasteter Main-Thread), die Dauer bleibt so trotzdem exakt.
+    deadline = Date.now() + DURATION_MS;
+
+    intervalId = setInterval(() => {
+      remaining = Math.max(0, deadline - Date.now());
+
+      if (remaining <= 0) {
         remaining = 0;
         clearInterval(intervalId);
         running = false;
 
-        stopMouse();
-        track('task_end', { data: Object.fromEntries(emails.map((e) => [e.id, e.folder])) });
-        await flush();
         goto('/introductions_routes/NASA-TLX_intro_stress-route?condition=stress');
       }
     }, 10);
@@ -101,14 +99,12 @@ function start() {
   function selectEmail(email) {
     selectedEmail = email
     email.read = true
-    track('email_open', { emailId: email.id })
   }
 
   /** @param {string} folder */
   function selectFolder(folder) {
     activeFolder = folder
     selectedEmail = null
-    track('folder_open', { folder })
   }
 
   let visibleEmails = $derived(emails.filter(e => e.folder === activeFolder))
@@ -127,12 +123,10 @@ function start() {
 
   function onDragStart(email) {
     draggedEmail = email
-    track('drag_start', { emailId: email.id, folder: email.folder })
   }
 
   function onDrop(folder) {
     if (!draggedEmail) return
-    track('drop', { emailId: draggedEmail.id, folder, data: { from: draggedEmail.folder } })
     draggedEmail.folder = folder
     if (selectedEmail?.id === draggedEmail.id && folder !== activeFolder) {
       selectedEmail = null
@@ -337,7 +331,6 @@ function start() {
             class:unread={!email.read}
             draggable="true"
             ondragstart={() => onDragStart(email)}
-            ondragend={() => draggedEmail && track('drag_cancel', { emailId: draggedEmail.id })}
             role="button"
             tabindex="0"
             onclick={() => selectEmail(email)}
@@ -383,7 +376,7 @@ function start() {
                     href={part.href}
                     onclick={(e) => {
                       e.preventDefault()
-                      track('link_click', { emailId: selectedEmail.id, data: { href: part.href } })
+                      console.log({ type: 'link_clicked', href: part.href, emailId: selectedEmail.id, ts: Date.now() })
                     }}
                   >
                     {part.text}

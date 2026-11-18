@@ -1,16 +1,16 @@
 <script>
   import { goto } from '$app/navigation';
-  import { createSession } from '$lib/api';
+  import { createParticipant } from '$lib/api';
 
   let error = $state('');
   let busy = $state(false);
 
   async function begin() {
-    if (busy) return;          // Doppelklick erzeugt sonst zwei Sessions
+    if (busy) return;          // Doppelklick erzeugt sonst zwei Teilnehmer
     busy = true;
     error = '';
     try {
-      await createSession('stressless-first');
+      await createParticipant();   // PARTICIPANT; ab jetzt wird auch die Herzfrequenz gespeichert
       goto('/surveys_routes/survey_demographic-route');
     } catch (e) {
       error = 'Unable to reach server, please inform the study leader.';

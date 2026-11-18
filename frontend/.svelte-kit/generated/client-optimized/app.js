@@ -21,23 +21,27 @@ export const nodes = [
 	() => import('./nodes/9'),
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
-	() => import('./nodes/12')
+	() => import('./nodes/12'),
+	() => import('./nodes/13'),
+	() => import('./nodes/14')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
 		"/": [2],
-		"/introductions_routes/NASA-TLX_intro-route": [3],
-		"/introductions_routes/NASA-TLX_intro_stress-route": [4],
-		"/introductions_routes/end-route": [5],
-		"/introductions_routes/grand_intro-route": [6],
-		"/introductions_routes/task-stress_intro-route": [7],
-		"/introductions_routes/task-stressless_intro-route": [8],
-		"/surveys_routes/NASA-TLX_survey-route": [9],
-		"/surveys_routes/survey_demographic-route": [10],
-		"/task_routes/task-stress-route": [11],
-		"/task_routes/task-stressless-route": [12]
+		"/introductions_routes/ATI_intro-route": [3],
+		"/introductions_routes/NASA-TLX_intro-route": [4],
+		"/introductions_routes/NASA-TLX_intro_stress-route": [5],
+		"/introductions_routes/end-route": [6],
+		"/introductions_routes/grand_intro-route": [7],
+		"/introductions_routes/task-stress_intro-route": [8],
+		"/introductions_routes/task-stressless_intro-route": [9],
+		"/surveys_routes/ATI_route": [10],
+		"/surveys_routes/NASA-TLX_survey-route": [11],
+		"/surveys_routes/survey_demographic-route": [12],
+		"/task_routes/task-stress-route": [13],
+		"/task_routes/task-stressless-route": [14]
 	};
 
 export const hooks = {

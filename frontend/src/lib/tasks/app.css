@@ -47,6 +47,12 @@
   margin-left: 2%;
 }
 
+.email-app .task_error {
+  margin-left: 2%;
+  color: #b00020;
+  font-weight: bold;
+}
+
 .email-app .top_title {
   display: flex;
   align-items: center;

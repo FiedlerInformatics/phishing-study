@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/surveys_routes/survey_demographic-route/+page.svelte";
+export { default as component } from "../../../../src/routes/surveys_routes/ATI_route/+page.svelte";

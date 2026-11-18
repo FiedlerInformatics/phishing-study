@@ -1,8 +1,8 @@
 <script>
     import {goto} from '$app/navigation';
-    import { submitResponses } from '$lib/api';
+    import { submitSurvey } from '$lib/api';
 
-    const startedAt = Date.now();
+    const startTime = new Date().toISOString();   // SURVEY_SESSION.startTime
     let saveError = '';
     let saving = false;
 
@@ -60,14 +60,17 @@
         saving = true;
         saveError = '';
         try {
-            await submitResponses('nasa-tlx', condition, {
-                mental_demand: value_mental_demand,
-                physical_demand: value_physical_demand,
-                temporal_demand: value_temporal_demand,
-                performance: value_performance,
-                effort: value_effort,
-                frustration: value_frustration
-            }, startedAt);
+            // SURVEY: 2 = 'NASA-TLX-stressless' (Fragen 8–13), 3 = 'NASA-TLX-stress' (Fragen 14–19)
+            const surveyID = condition === 'stress' ? 3 : 2;
+            const firstQuestionID = condition === 'stress' ? 14 : 8;
+            await submitSurvey(surveyID, startTime, {
+                [firstQuestionID]:     value_mental_demand,
+                [firstQuestionID + 1]: value_physical_demand,
+                [firstQuestionID + 2]: value_temporal_demand,
+                [firstQuestionID + 3]: value_performance,
+                [firstQuestionID + 4]: value_effort,
+                [firstQuestionID + 5]: value_frustration
+            });
         } catch (e) {
             console.error(e);
             saveError = 'Your answers could not be saved. Please inform the study leader.';
@@ -243,7 +246,7 @@
             <p><strong>Your choice: {value_effort === -1 ? "No input" : value_effort}</strong></p>
             <div class="quest_box">
                 <form>
-                    <input id="effort_input" type="range" min="0" max="20" bind:value={value_effort} on:click={value_effort = changeNULLValue(value_effort)}>
+                    <input id="effort_input" type="range" min="0" max="20" bind:value={value_effort} on:click={() => value_effort = changeNULLValue(value_effort)}>
                 </form>
             </div>
         </div>
@@ -254,7 +257,7 @@
             <p><strong>Your choice: {value_frustration === -1 ? "No input" : value_frustration}</strong></p>
             <div class="quest_box">
                 <form>
-                    <input id="frustration_input" type="range" min="0" max="20" bind:value={value_frustration} on:click={value_frustration = changeNULLValue(value_frustration)}>
+                    <input id="frustration_input" type="range" min="0" max="20" bind:value={value_frustration} on:click={() => value_frustration = changeNULLValue(value_frustration)}>
                 </form>
             </div>
         </div>

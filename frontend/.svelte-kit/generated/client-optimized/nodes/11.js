@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/task_routes/task-stress-route/+page.svelte";
+export { default as component } from "../../../../src/routes/surveys_routes/NASA-TLX_survey-route/+page.svelte";

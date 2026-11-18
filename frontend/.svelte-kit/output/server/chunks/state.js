@@ -1,4 +1,4 @@
-import "./internal.js";
+import "./index-server.js";
 import { d as getContext } from "./server.js";
 import "./client.js";
 //#endregion

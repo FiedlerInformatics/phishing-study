@@ -1,9 +1,13 @@
 <script>
   import { onMount } from 'svelte';
-  import { finishSession } from '$lib/api';
+  import { clearParticipantID } from '$lib/api';
+  import { flushHr } from '$lib/hrRecorder';
 
-  // markiert die Session als vollständig (sessions.finished_at)
-  onMount(() => { finishSession().catch(console.error); });
+  // Studienende: keine weiteren Daten aufzeichnen, restliche Herzfrequenzdaten speichern
+  onMount(() => {
+    clearParticipantID();
+    flushHr();
+  });
 </script>
 
 <style>

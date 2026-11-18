@@ -2,7 +2,7 @@
 
 export const index = 12;
 let component_cache;
-export const component = async () => component_cache ??= (await import('../entries/pages/task_routes/task-stressless-route/_page.svelte.js')).default;
-export const imports = ["_app/immutable/nodes/12.BoY0HOo1.js","_app/immutable/chunks/D0SsQWSv.js","_app/immutable/chunks/BqhZLBLo.js","_app/immutable/chunks/zt_9YNQm.js","_app/immutable/chunks/CP97kCR3.js","_app/immutable/chunks/DPvOCkzW.js","_app/immutable/chunks/CJnbLEGT.js"];
-export const stylesheets = ["_app/immutable/assets/Button_start.BLNK1Qmd.css"];
+export const component = async () => component_cache ??= (await import('../entries/pages/surveys_routes/survey_demographic-route/_page.svelte.js')).default;
+export const imports = ["_app/immutable/nodes/12.DDxDzjBi.js","_app/immutable/chunks/DJ4yZ0gA.js","_app/immutable/chunks/CQB0cjXM.js","_app/immutable/chunks/Cotdg9f-.js","_app/immutable/chunks/t62M88qj.js","_app/immutable/chunks/Bq_SKUH_.js","_app/immutable/chunks/BYkwlc4S.js"];
+export const stylesheets = ["_app/immutable/assets/12.CKImAh7k.css"];
 export const fonts = [];

@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/task_routes/task-stressless-route/+page.svelte";
+export { default as component } from "../../../../src/routes/surveys_routes/survey_demographic-route/+page.svelte";

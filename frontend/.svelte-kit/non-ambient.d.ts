@@ -29,7 +29,7 @@ declare module "$app/types" {
 	type MatcherParam<M> = M extends (param : string) => param is (infer U extends string) ? U : string;
 
 	export interface AppTypes {
-		RouteId(): "/" | "/api" | "/api/events" | "/api/responses" | "/api/sessions" | "/introductions_routes" | "/introductions_routes/ATI_intro-route" | "/introductions_routes/NASA-TLX_intro-route" | "/introductions_routes/NASA-TLX_intro_stress-route" | "/introductions_routes/end-route" | "/introductions_routes/grand_intro-route" | "/introductions_routes/task-stress_intro-route" | "/introductions_routes/task-stressless_intro-route" | "/surveys_routes" | "/surveys_routes/ATI_route" | "/surveys_routes/NASA-TLX_survey-route" | "/surveys_routes/survey_demographic-route" | "/task_routes" | "/task_routes/task-stress-route" | "/task_routes/task-stressless-route";
+		RouteId(): "/" | "/api" | "/api/events" | "/api/hr" | "/api/participants" | "/api/surveys" | "/api/tasks" | "/introductions_routes" | "/introductions_routes/ATI_intro-route" | "/introductions_routes/NASA-TLX_intro-route" | "/introductions_routes/NASA-TLX_intro_stress-route" | "/introductions_routes/end-route" | "/introductions_routes/grand_intro-route" | "/introductions_routes/task-stress_intro-route" | "/introductions_routes/task-stressless_intro-route" | "/surveys_routes" | "/surveys_routes/ATI_route" | "/surveys_routes/NASA-TLX_survey-route" | "/surveys_routes/survey_demographic-route" | "/task_routes" | "/task_routes/task-stress-route" | "/task_routes/task-stressless-route";
 		RouteParams(): {
 			
 		};
@@ -37,8 +37,10 @@ declare module "$app/types" {
 			"/": Record<string, never>;
 			"/api": Record<string, never>;
 			"/api/events": Record<string, never>;
-			"/api/responses": Record<string, never>;
-			"/api/sessions": Record<string, never>;
+			"/api/hr": Record<string, never>;
+			"/api/participants": Record<string, never>;
+			"/api/surveys": Record<string, never>;
+			"/api/tasks": Record<string, never>;
 			"/introductions_routes": Record<string, never>;
 			"/introductions_routes/ATI_intro-route": Record<string, never>;
 			"/introductions_routes/NASA-TLX_intro-route": Record<string, never>;
@@ -55,7 +57,7 @@ declare module "$app/types" {
 			"/task_routes/task-stress-route": Record<string, never>;
 			"/task_routes/task-stressless-route": Record<string, never>
 		};
-		Pathname(): "/" | "/api/events" | "/api/responses" | "/api/sessions" | "/introductions_routes/ATI_intro-route" | "/introductions_routes/NASA-TLX_intro-route" | "/introductions_routes/NASA-TLX_intro_stress-route" | "/introductions_routes/end-route" | "/introductions_routes/grand_intro-route" | "/introductions_routes/task-stress_intro-route" | "/introductions_routes/task-stressless_intro-route" | "/surveys_routes/ATI_route" | "/surveys_routes/NASA-TLX_survey-route" | "/surveys_routes/survey_demographic-route" | "/task_routes/task-stress-route" | "/task_routes/task-stressless-route";
+		Pathname(): "/" | "/api/events" | "/api/hr" | "/api/participants" | "/api/surveys" | "/api/tasks" | "/introductions_routes/ATI_intro-route" | "/introductions_routes/NASA-TLX_intro-route" | "/introductions_routes/NASA-TLX_intro_stress-route" | "/introductions_routes/end-route" | "/introductions_routes/grand_intro-route" | "/introductions_routes/task-stress_intro-route" | "/introductions_routes/task-stressless_intro-route" | "/surveys_routes/ATI_route" | "/surveys_routes/NASA-TLX_survey-route" | "/surveys_routes/survey_demographic-route" | "/task_routes/task-stress-route" | "/task_routes/task-stressless-route";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/email_assets/OneDrive-Symbol.png" | "/email_assets/adidas.png" | "/email_assets/apple-logo.png" | "/email_assets/aymasim.png" | "/email_assets/dropbox-logo.png" | "/email_assets/favicon.svg" | "/email_assets/immoscout24.png" | "/email_assets/microsoft-logo.png" | "/email_assets/nivea-logo.png" | "/email_assets/nivea.png" | "/email_assets/norton.png" | "/email_assets/payback-rewe.png" | "/email_assets/tipico.png" | "/email_assets/unidays.png" | "/email_assets/zalando.png" | "/favicon.svg" | "/icons.svg" | "/snapshots/ImmoScout24.html" | "/snapshots/adidas.html" | "/snapshots/amaysim.html" | "/snapshots/dropbox.html" | "/snapshots/microsoft.html" | "/snapshots/myunidays.html" | "/snapshots/nivea.html" | "/snapshots/norton.html" | "/snapshots/onedrive.html" | "/snapshots/rewe.html" | "/snapshots/tipico.html" | "/snapshots/zalando.html" | string & {};
 	}

@@ -3,9 +3,10 @@
 
   //import {navigate} from "svelte-routing";
   import {goto} from '$app/navigation';
-  import { submitResponses } from '$lib/api';
+  import { submitSurvey } from '$lib/api';
 
-  const startedAt = Date.now();
+  const SURVEY_ID = 1;                          // SURVEY: 'demographic/BFI-10'
+  const startTime = new Date().toISOString();   // SURVEY_SESSION.startTime
   let saveError = '';
   let saving = false;
 
@@ -57,15 +58,16 @@
     saving = true;
     saveError = '';
     try {
-      await submitResponses('demographic', 'main', {
-        gender,
-        age,
-        education_level: educationLevel,
-        occupation,
-        field_of_study,
-        industry,
-        native_language: resolved_native_language
-      }, startedAt);
+      // Schlüssel = questionID aus QUESTION
+      await submitSurvey(SURVEY_ID, startTime, {
+        1: gender,
+        2: age,
+        3: educationLevel,
+        4: occupation,
+        5: field_of_study,
+        6: industry,
+        7: resolved_native_language
+      });
       goto('/introductions_routes/task-stressless_intro-route');
       return true;
     } catch (e) {
