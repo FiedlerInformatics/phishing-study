@@ -6,9 +6,10 @@
 
   let { children } = $props();
 
-  // Die einzige HR-Verbindung der Studie: main.py baut pro WebSocket-Client
-  // eine eigene Bluetooth-Verbindung zum Gurt auf.
-  // Gespeichert wird in hrRecorder.js, sobald ein Teilnehmer angelegt ist.
+  // Die einzige HR-Verbindung der Studie (Tasks lesen nur hr.bpm).
+  // Gespeichert wird in hrRecorder.js, solange ein Teilnehmer angelegt ist:
+  // von grand_intro (createParticipant) bis zur End-Seite (clearParticipantID),
+  // also über alle Tasks und Fragebögen hinweg.
   onMount(() => {
     const stopRecording = startHrRecording();
     const disconnect = connectHeartRate((message) => {

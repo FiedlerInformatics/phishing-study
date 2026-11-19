@@ -5,7 +5,11 @@
 // Bildschirmunabhängig:
 //   - UI-Elemente werden über ihre elementID erkannt (Attribut data-ui-element), nicht über ihre Position.
 //   - x / y              = Mausposition als Anteil der Fensterbreite / -höhe (0–1).
-//   - scrollStart/End X/Y = Scrollposition als Anteil des scrollbaren Bereichs (0 = Anfang, 1 = Ende).
+//   - scrollStart/End X/Y = Position der oberen (linken) Kante des sichtbaren Ausschnitts als Anteil
+//                           der gesamten Inhaltshöhe (-breite): scrollTop / scrollHeight.
+//                           0 = ganz oben; ganz unten = 1 - clientHeight / scrollHeight.
+//                           (Nicht scrollTop / maxScroll: Bei Containern, die nur wenige Pixel
+//                           überstehen, springt dieser Wert bei jedem Scrollen zwischen 0 und 1.)
 import { postBatch } from './api';
 
 const FLUSH_INTERVAL_MS = 2000;
@@ -93,9 +97,10 @@ let scroll = null;
 let scrollTimer;
 
 function scrollPosition(el) {
-  const maxX = el.scrollWidth - el.clientWidth;
-  const maxY = el.scrollHeight - el.clientHeight;
-  return { x: maxX > 0 ? el.scrollLeft / maxX : 0, y: maxY > 0 ? el.scrollTop / maxY : 0 };
+  return {
+    x: el.scrollWidth > 0 ? el.scrollLeft / el.scrollWidth : 0,
+    y: el.scrollHeight > 0 ? el.scrollTop / el.scrollHeight : 0
+  };
 }
 
 function onScroll(e) {

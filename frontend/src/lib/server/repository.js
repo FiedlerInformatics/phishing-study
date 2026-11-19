@@ -2,6 +2,7 @@
 import { randomBytes } from 'node:crypto';
 import { db } from './db';
 import { BadRequest } from './respond';
+import { writeFileSync, readFileSync, rmSync } from 'node:fs';
 
 const stmt = {
   // PARTICIPANT
@@ -54,18 +55,24 @@ function required(body, ...fields) {
     if (body?.[field] === undefined || body[field] === null) throw new BadRequest(`${field} fehlt`);
   }
 }
-
+var participantID = null;
 /** Legt einen Teilnehmer mit pseudonymer ID an. */
 export function createParticipant() {
-  const participantID = 'P-' + randomBytes(3).toString('hex');
+  participantID = 'P-' + randomBytes(3).toString('hex');
   stmt.insertParticipant.run(participantID);
   return { participantID };
 }
 
+var body = {};
 export function startTask(body) {
   required(body, 'participantID', 'condition', 'taskStart');
   const { participantID, condition, taskStart } = body;
   return { taskID: Number(stmt.insertTask.run({ participantID, condition, taskStart }).lastInsertRowid) };
+}
+
+/** Creating the statusfile */
+function createStatusFile() {
+  const data = {};
 }
 
 export function endTask(body) {

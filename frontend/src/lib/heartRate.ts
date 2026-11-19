@@ -1,27 +1,42 @@
 /**
- * Liest den Pulswert aus einer WebSocket-Nachricht.
- * Akzeptiert eine reine Zahl ("94") oder JSON, z. B.
- * {"bpm": 94, "rr": [...], "contact": 1} bzw. {"heartRate": 94}.
+ * Verbindung zu backend/main.py (ws://localhost:8765).
+ *
+ * Nur +layout.svelte ruft connectHeartRate auf – es gibt genau eine Verbindung pro
+ * Browser-Tab. Komponenten, die nur den aktuellen Puls anzeigen, lesen hr.bpm aus
+ * hrState.svelte.js.
  */
-function parseHeartRate(data: unknown): number | null {
-  if (typeof data !== 'string') return null;
 
-  const direct = Number(data);
-  if (Number.isFinite(direct)) return direct > 0 ? direct : null;
+/** Eine Nachricht von main.py; Feldnamen wie in HR_SAMPLE / RR_INTERVAL. */
+export interface HeartRateMessage {
+  polarDevID: string | null;
+  hrTime: string;                                  // ISO-8601 UTC, Empfang in main.py
+  bpm: number;
+  contact: 0 | 1;
+  rrIntervals: { rrTime: string; rrMs: number }[];
+}
+
+function parseHeartRate(data: unknown): HeartRateMessage | null {
+  if (typeof data !== 'string') return null;
 
   try {
     const msg = JSON.parse(data);
-    const value = Number(
-      msg?.bpm ?? msg?.heartRate ?? msg?.heart_rate ?? msg?.hr ?? msg?.data?.bpm
-    );
-    return Number.isFinite(value) && value > 0 ? value : null;
+    const bpm = Number(msg?.bpm);
+    if (!Number.isFinite(bpm) || typeof msg?.hrTime !== 'string') return null;
+
+    return {
+      polarDevID: msg.polarDevID ?? null,
+      hrTime: msg.hrTime,
+      bpm,
+      contact: msg.contact === 0 ? 0 : 1,
+      rrIntervals: Array.isArray(msg.rrIntervals) ? msg.rrIntervals : []
+    };
   } catch {
     return null;
   }
 }
 
 export function connectHeartRate(
-  onHeartRate: (heartRate: number) => void
+  onHeartRate: (message: HeartRateMessage) => void
 ): () => void {
   let socket: WebSocket | undefined;
   let reconnectTimer: ReturnType<typeof setTimeout> | undefined;
@@ -33,10 +48,10 @@ export function connectHeartRate(
     socket = new WebSocket('ws://localhost:8765');
 
     socket.onmessage = (event) => {
-      const heartRate = parseHeartRate(event.data);
+      const message = parseHeartRate(event.data);
 
-      if (heartRate !== null) {
-        onHeartRate(heartRate);
+      if (message !== null) {
+        onHeartRate(message);
       } else {
         console.warn('Unbekanntes Herzfrequenz-Format:', event.data);
       }

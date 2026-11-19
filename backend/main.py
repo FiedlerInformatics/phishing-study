@@ -5,7 +5,6 @@ from datetime import datetime, timedelta, timezone
 
 import websockets
 from bleak import BleakClient, BleakScanner
-from websockets.exceptions import ConnectionClosed
 
 HR_UUID = "00002a37-0000-1000-8000-00805f9b34fb"
 RETRY_DELAY_SECONDS = 3
@@ -89,7 +88,15 @@ async def find_polar():
     )
 
 
-async def stream_heart_rate(websocket):
+# Alle verbundenen Frontends (Browser-Tabs). Es gibt genau EINE Bluetooth-Verbindung
+# zum Gurt; jede Messung wird an alle Clients verteilt. Zwei parallele BleakClients
+# zum selben Gerät liefern sonst doppelte Notifications und reißen sich unter BlueZ
+# gegenseitig die Verbindung ab.
+clients: set = set()
+
+
+async def stream_heart_rate():
+    """Hält die Verbindung zum Polar-Gurt und verteilt jede Messung an alle Clients."""
     while True:
         print("Suche Polar-Herzfrequenzsensor …")
         device = await find_polar()
@@ -102,18 +109,20 @@ async def stream_heart_rate(websocket):
             await asyncio.sleep(RETRY_DELAY_SECONDS)
             continue
 
-        queue: asyncio.Queue[dict] = asyncio.Queue()
         disconnected = asyncio.Event()
         loop = asyncio.get_running_loop()
 
         def handle_disconnect(_client):
             loop.call_soon_threadsafe(disconnected.set)
 
+        def send_to_clients(message: str):
+            websockets.broadcast(clients, message)
+
         def handle_heart_rate(_sender, data: bytearray, device_name=device.name):
             received = datetime.now(timezone.utc)   # Zeitpunkt so früh wie möglich festhalten
             try:
                 message = build_message(device_name, received, parse_heart_rate(data))
-                loop.call_soon_threadsafe(queue.put_nowait, message)
+                loop.call_soon_threadsafe(send_to_clients, json.dumps(message))
             except ValueError as error:
                 print(f"Ungültiges Heart-Rate-Paket: {error}")
 
@@ -126,20 +135,8 @@ async def stream_heart_rate(websocket):
             ) as client:
                 await client.start_notify(HR_UUID, handle_heart_rate)
                 print("Herzfrequenzmessung läuft.")
+                await disconnected.wait()
 
-                while not disconnected.is_set():
-                    try:
-                        message = await asyncio.wait_for(
-                            queue.get(),
-                            timeout=1.0,
-                        )
-                    except asyncio.TimeoutError:
-                        continue
-
-                    await websocket.send(json.dumps(message))
-
-        except ConnectionClosed:
-            return
         except asyncio.CancelledError:
             raise
         except Exception as error:
@@ -153,21 +150,21 @@ async def stream_heart_rate(websocket):
 
 
 async def handler(websocket):
+    """Ein Frontend meldet sich an und bekommt ab jetzt alle Messungen."""
+    clients.add(websocket)
+    print(f"Frontend verbunden ({len(clients)} aktiv).")
     try:
-        await stream_heart_rate(websocket)
-    except ConnectionClosed:
-        pass
-    except asyncio.CancelledError:
-        raise
-    except Exception as error:
-        print(f"WebSocket-Fehler: {error}")
+        await websocket.wait_closed()
+    finally:
+        clients.discard(websocket)
+        print(f"Frontend getrennt ({len(clients)} aktiv).")
 
 
 async def main():
     print("Herzfrequenz-Backend läuft auf ws://localhost:8765")
 
     async with websockets.serve(handler, "localhost", 8765):
-        await asyncio.Future()
+        await stream_heart_rate()
 
 
 if __name__ == "__main__":

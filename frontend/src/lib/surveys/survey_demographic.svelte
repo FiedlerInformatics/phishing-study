@@ -23,6 +23,22 @@
   $: resolved_native_language =
     native_language === 'Other' ? native_language_other : native_language;
 
+  // Bedingte Fragen: Studierende beantworten "Field of study", alle anderen "Industry".
+  // Die jeweils andere Frage wird ausgeblendet und als NULL gespeichert.
+  $: isStudent = occupation === 'Student';
+  $: askFieldOfStudy = occupation !== '' && isStudent;
+  $: askIndustry = occupation !== '' && !isStudent;
+  $: if (!askFieldOfStudy) field_of_study = '';
+  $: if (!askIndustry) industry = '';
+
+  const AGE_MIN = 18;
+  const AGE_MAX = 99;
+
+  function isValidAge(value) {
+    const n = Number(value);
+    return value !== '' && value !== null && Number.isInteger(n) && n >= AGE_MIN && n <= AGE_MAX;
+  }
+
   let showValidationWarning = false;
   let invalidFields = [];
 
@@ -41,15 +57,15 @@
 
     const fields = [
       { value: gender, id: 'gender_id' },
-      { value: age, id: 'age_id' },
       { value: educationLevel, id: 'education_level_id' },
       { value: occupation, id: 'occupation_id' },
-      { value: field_of_study, id: 'studyfield_id' },
-      { value: industry, id: 'industry_id' },
+      ...(askFieldOfStudy ? [{ value: field_of_study, id: 'field_of_study_id' }] : []),
+      ...(askIndustry ? [{ value: industry, id: 'industry_id' }] : []),
       { value: resolved_native_language, id: 'native_language_id' }
     ];
 
     invalidFields = fields.filter((field) => isEmpty(field.value)).map((field) => field.id);
+    if (!isValidAge(age)) invalidFields = [...invalidFields, 'age_id'];
 
     showValidationWarning = invalidFields.length > 0;
 
@@ -64,8 +80,8 @@
         2: age,
         3: educationLevel,
         4: occupation,
-        5: field_of_study,
-        6: industry,
+        5: askFieldOfStudy ? field_of_study : null,   // nur Studierende
+        6: askIndustry ? industry : null,             // nur Nicht-Studierende
         7: resolved_native_language
       });
       goto('/introductions_routes/task-stressless_intro-route');
@@ -176,6 +192,12 @@
     background-color: #f5c2c2;
   }
 
+  .quest_box p.field-hint {
+    margin: 0.5rem 0 0;
+    color: #b00020;
+    font-weight: bold;
+  }
+
   .validation-warning {
     color: #b00020;
     font-weight: bold;
@@ -221,8 +243,11 @@
     <div class="quest_box" class:invalid={invalidFields.includes('age_id')}>
       <h2 id="age_id" class:invalid={invalidFields.includes('age_id')}>Age</h2>
       <form id="age_input">
-        <input type="number" min="18" max="99" bind:value={age} />
+        <input type="number" min={AGE_MIN} max={AGE_MAX} step="1" bind:value={age} />
       </form>
+      {#if invalidFields.includes('age_id')}
+        <p class="field-hint">Please enter your age as a whole number between {AGE_MIN} and {AGE_MAX}.</p>
+      {/if}
     </div>
 
 <!------------------------- EDUCATION -------------------------------------------------------------------->
@@ -277,6 +302,7 @@
 
 <!--------------------------- FIELD OF STUDY ----------------------------------------->
 
+ {#if askFieldOfStudy}
  <div class="quest_box" class:invalid={invalidFields.includes('field_of_study_id')}>
  
       <h2 id="field_of_study_id" class:invalid={invalidFields.includes('field_of_study_id')}>Field of study</h2>
@@ -301,8 +327,11 @@
       </form>
     </div>
 
+{/if}
+
 <!--------------------------- INDUSTRY ----------------------------------------->
 
+    {#if askIndustry}
     <div class="quest_box" class:invalid={invalidFields.includes('industry_id')}>
 
       <h2 id="industry_id" class:invalid={invalidFields.includes('industry_id')}>Industry</h2>
@@ -327,6 +356,8 @@
         </select>
       </form>
     </div>
+
+{/if}
 
 <!--------------------------- NATIVE LANGUAGE ----------------------------------------->
 

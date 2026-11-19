@@ -6,7 +6,10 @@
   import './app.css';
 
   import {onMount } from 'svelte'
-  import { connectHeartRate } from '$lib/heartRate';
+  import { hr } from '$lib/hrState.svelte.js';
+  import { startTask, endTask } from '$lib/api';
+  import { startTaskTracking, stopTaskTracking, trackDragStart, trackDrop, trackDragEnd } from '$lib/tracker';
+  import { FOLDER_ID, BUTTON_ID, linkElementID } from '$lib/uiElements';
   import {goto} from '$app/navigation';
 
   import email_warning from './assets/email-warning-icon.svg'
@@ -26,7 +29,8 @@
   import Button_start from '$lib/components/Button_start.svelte';
   import {timer} from '$lib/timer.svelte'
 
-  let emails = $state(emailsRaw.map(e => ({ ...e })))
+  // Set A = stressless-Task (emails.json, Feld "set")
+  let emails = $state(emailsRaw.filter(e => e.set === 'A').map(e => ({ ...e })))
   let selectedEmail = $state(null)
   let activeFolder = $state('inbox')
 
@@ -50,29 +54,51 @@
   const isFinalCountdown = $derived(remaining < 60000 && running);
   const isFirstWarning = $derived(remaining < 1.5 * 60000 && running)
 
-  // heart rate measurements
-  let heartRate: number | null = $state(null);
+  // TASK anlegen -> Tracking starten -> Timer starten.
+  // Ohne taskID (Server nicht erreichbar) startet der Task nicht.
+  let taskID: number | null = null;
+  let startError = $state('');
 
   onMount(() => {
-    start();
+    let mounted = true;
 
-    const disconnectHeartRate = connectHeartRate((value:any) => {
-      heartRate = value;
-      console.log("heart rate: ", value)
-    });
+    startTask('stressless')
+      .then((id) => {
+        if (!mounted) return;
+        taskID = id;
+        startTaskTracking(id);
+        start();
+      })
+      .catch((err) => {
+        console.error(err);
+        startError = 'The task could not be started. Please inform the study leader.';
+      });
 
     return () => {
-      disconnectHeartRate();
-
+      mounted = false;
+      stopTaskTracking();
       if (intervalId !== undefined) {
         clearInterval(intervalId);
       }
     };
   });
 
+  /** Timer abgelaufen: Tracking abschließen, taskEnd speichern, weiter zum NASA-TLX. */
+  async function finishTask() {
+    await stopTaskTracking();
+    if (taskID !== null) {
+      try {
+        await endTask(taskID);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    goto('/introductions_routes/NASA-TLX_intro-route?condition=stressless');
+  }
+
 
   function start() {
-    if (running) return;
+    if (running || taskID === null) return;
     running = true;
 
     // Feste Deadline statt Tick-Zählung: setInterval wird vom Browser gedrosselt
@@ -87,7 +113,7 @@
         clearInterval(intervalId);
         running = false;
 
-        goto('/introductions_routes/NASA-TLX_intro-route?condition=stressless');
+        finishTask();
       }
     }, 10);
   }
@@ -118,20 +144,25 @@
 
   let draggedEmail = $state(null)
 
-  function onDragStart(email) {
+  function onDragStart(e, email) {
     draggedEmail = email
+    trackDragStart(e, email.id, FOLDER_ID[email.folder])
   }
 
-  function onDrop(folder) {
+  function onDragEnd() {
+    trackDragEnd()          // nur wirksam, wenn vorher kein gültiger Drop kam
+    draggedEmail = null
+  }
+
+  function onDrop(e, folder) {
     if (!draggedEmail) return
+    trackDrop(e, FOLDER_ID[folder])
     draggedEmail.folder = folder
     if (selectedEmail?.id === draggedEmail.id && folder !== activeFolder) {
       selectedEmail = null
     }
     draggedEmail = null
   }
-
-   let ws: WebSocket;
 
 </script>
 
@@ -143,11 +174,15 @@
           <h1>Outmail</h1>
           <img class="top_icon" src={mail_icon} alt="mail logo">
         </div>
+        {#if startError}
+          <p class="task_error" role="alert">{startError}</p>
+        {/if}
     </section>
 
     <section class="tool_sidebar">
       <div
         id="inbox"
+        data-ui-element={FOLDER_ID.inbox}
         class="sidebar_item"
         class:active={activeFolder === 'inbox'}
         role="button"
@@ -157,7 +192,7 @@
 
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('inbox')}
+        ondrop={(e) => onDrop(e, 'inbox')}
       >
         <img class="icon" src={inbox_icon} alt="" aria-hidden="true">
         <h4>Inbox</h4>
@@ -165,6 +200,7 @@
 
       <div
         id="important"
+        data-ui-element={FOLDER_ID.important}
         class="sidebar_item"
         class:active={activeFolder === 'important'}
         role="button"
@@ -174,7 +210,7 @@
         
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('important')}
+        ondrop={(e) => onDrop(e, 'important')}
       >
         <img class="icon" src={importantMail_icon} alt="" aria-hidden="true">
         <h4>Important</h4>
@@ -182,6 +218,7 @@
 
       <div
         id="spam"
+        data-ui-element={FOLDER_ID.spam}
         class="sidebar_item"
         class:active={activeFolder === 'spam'}
         role="button"
@@ -191,7 +228,7 @@
 
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('spam')}
+        ondrop={(e) => onDrop(e, 'spam')}
       >
         <img class="icon" src={email_warning} alt="" aria-hidden="true">
         <h4>Spam</h4>
@@ -199,6 +236,7 @@
 
       <div
         id="neutral"
+        data-ui-element={FOLDER_ID.neutral}
         class="sidebar_item"
         class:active={activeFolder === 'neutral'}
         role="button"
@@ -208,7 +246,7 @@
         
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('neutral')}
+        ondrop={(e) => onDrop(e, 'neutral')}
       >
         <img class="icon" src={mail_icon} alt="" aria-hidden="true">
         <h4>Neutral</h4>
@@ -216,6 +254,7 @@
 
       <div
         id="bin"
+        data-ui-element={FOLDER_ID.bin}
         class="sidebar_item"
         class:active={activeFolder === 'bin'}
         role="button"
@@ -225,7 +264,7 @@
 
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('bin')}
+        ondrop={(e) => onDrop(e, 'bin')}
 
       >
         <img class="icon" src={trash_icon} alt="" aria-hidden="true">
@@ -234,6 +273,7 @@
 
       <div
         id="sent"
+        data-ui-element={FOLDER_ID.sent}
         class="sidebar_item"
         class:active={activeFolder === 'sent'}
         role="button"
@@ -247,6 +287,7 @@
      
       <div
         id="archive"
+        data-ui-element={FOLDER_ID.archive}
         class="sidebar_item"
         class:active={activeFolder === 'archive'}
         role="button"
@@ -256,7 +297,7 @@
 
         class:drop_target={draggedEmail != null}
         ondragover={(e) => e.preventDefault()}
-        ondrop={() => onDrop('archive')}
+        ondrop={(e) => onDrop(e, 'archive')}
       >
         <img class="icon" src={archive_icon} alt="" aria-hidden="true">
         <h4>Archive</h4>
@@ -264,6 +305,7 @@
 
       <div
         id="notes"
+        data-ui-element={FOLDER_ID.notes}
         class="sidebar_item"
         class:active={activeFolder === 'notes'}
         role="button"
@@ -277,6 +319,7 @@
 
       <div
         id="tags"
+        data-ui-element={FOLDER_ID.tags}
         class="sidebar_item"
         class:active={activeFolder === 'tags'}
         role="button"
@@ -297,8 +340,10 @@
             class="email_row"
             class:selected={selectedEmail?.id === email.id}
             class:unread={!email.read}
+            data-ui-element={email.id}
             draggable="true"
-            ondragstart={() => onDragStart(email)}
+            ondragstart={(e) => onDragStart(e, email)}
+            ondragend={onDragEnd}
             role="button"
             tabindex="0"
             onclick={() => selectEmail(email)}
@@ -341,10 +386,10 @@
                 {:else if part.type === 'link'}
                   <a
                     class="body_link"
+                    data-ui-element={linkElementID(selectedEmail.id)}
                     href={part.href}
                     onclick={(e) => {
                       e.preventDefault()
-                      console.log({ type: 'link_clicked', href: part.href, emailId: selectedEmail.id, ts: Date.now() })
                     }}
                   >
                     {part.text}

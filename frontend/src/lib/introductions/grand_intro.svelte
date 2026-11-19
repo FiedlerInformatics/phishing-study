@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+  import * as fs from 'fs';
   import { goto } from '$app/navigation';
   import { createParticipant } from '$lib/api';
 
@@ -10,8 +11,9 @@
     busy = true;
     error = '';
     try {
-      await createParticipant();   // PARTICIPANT; ab jetzt wird auch die Herzfrequenz gespeichert
+      await createParticipant();
       goto('/surveys_routes/survey_demographic-route');
+
     } catch (e) {
       error = 'Unable to reach server, please inform the study leader.';
       console.error(e);
